@@ -3,16 +3,16 @@ import "./UsersList.css";
 import UsersListItem from "./UsersListItem";
 
 export default function UsersList(props) {
-	if (!props.users) {
+	if (!props.users || props.users.length === 0) {
 		return (
 			<div className="center">
-				<h3>No users found.</h3>
+				<h2>No users found.</h2>
 			</div>
 		);
 	}
 
 	return (
-		<ul>
+		<ul className="users-list">
 			{props.users.map((user) => (
 				<UsersListItem user={user} key={user.id} />
 			))}
