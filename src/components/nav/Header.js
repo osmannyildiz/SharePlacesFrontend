@@ -19,7 +19,8 @@ export default function Header() {
 	return (
 		<React.Fragment>
 			{drawerIsOpen && <Backdrop onClick={closeDrawer} />}
-			{drawerIsOpen && <SideDrawer />}
+			<SideDrawer isOpen={drawerIsOpen} handleCloseDrawer={closeDrawer} />
+
 			<header className="header">
 				<button className="header__menu-btn" onClick={openDrawer}>
 					<span />
