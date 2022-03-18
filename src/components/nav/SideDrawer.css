@@ -1,0 +1,15 @@
+.side-drawer {
+	width: 70%;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+	z-index: 100;
+}
+
+.side-drawer-nav {
+	height: 100%;
+}
+
