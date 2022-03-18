@@ -11,7 +11,7 @@ export default function NavLinks() {
 				</NavLink>
 			</li>
 			<li>
-				<NavLink to="/u1/places">MY PLACES</NavLink>
+				<NavLink to="/users/1/places">MY PLACES</NavLink>
 			</li>
 			<li>
 				<NavLink to="/places/add">ADD PLACE</NavLink>

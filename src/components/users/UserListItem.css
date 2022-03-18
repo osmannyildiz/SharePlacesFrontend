@@ -1,14 +1,14 @@
-.users-list-item {
+.user-list-item {
 	width: calc(45% - 2rem);
 	min-width: 17.5rem;
 	margin: 1rem;
 }
 
-.users-list-item__content {
+.user-list-item__content {
 	padding: 0;
 }
 
-.users-list-item a {
+.user-list-item a {
 	width: 100%;
 	height: 100%;
 	padding: 1rem;
@@ -19,32 +19,32 @@
 	text-decoration: none;
 }
 
-.users-list-item:hover a,
-.users-list-item:active a {
+.user-list-item:hover a,
+.user-list-item:active a {
 	background-color: #ffd900;
 }
 
-.users-list-item__image {
+.user-list-item__image {
 	width: 4rem;
 	height: 4rem;
 	margin-right: 1rem;
 }
 
-.users-list-item__info h2 {
+.user-list-item__info h2 {
 	margin: 0 0 0.5rem 0;
 	color: #ffd900;
 	font-size: 1.5rem;
 	font-weight: normal;
 }
 
-.users-list-item:hover h2,
-.users-list-item:active h2,
-.users-list-item:hover h3,
-.users-list-item:active h3 {
+.user-list-item:hover h2,
+.user-list-item:active h2,
+.user-list-item:hover h3,
+.user-list-item:active h3 {
 	color: #292929;
 }
 
-.users-list-item__info h3 {
+.user-list-item__info h3 {
 	margin: 0;
 }
 
