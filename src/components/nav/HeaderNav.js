@@ -4,7 +4,7 @@ import NavLinks from "./NavLinks";
 
 export default function HeaderNav() {
 	return (
-		<nav>
+		<nav className="header-nav">
 			<NavLinks />
 		</nav>
 	);
