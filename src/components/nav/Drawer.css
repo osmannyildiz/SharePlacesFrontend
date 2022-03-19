@@ -1,4 +1,4 @@
-.side-drawer {
+.drawer {
 	width: 70%;
 	height: 100vh;
 	position: fixed;
@@ -9,7 +9,7 @@
 	z-index: 100;
 }
 
-.side-drawer-nav {
+.drawer-nav {
 	height: 100%;
 }
 

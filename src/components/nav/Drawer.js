@@ -1,20 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import "./Drawer.css";
 import NavLinks from "./NavLinks";
-import "./SideDrawer.css";
 
-export default function SideDrawer(props) {
+export default function Drawer(props) {
 	const content = (
 		<CSSTransition
 			in={props.isOpen}
-			timeout={200}
 			classNames="slide-in-left"
+			timeout={200}
 			mountOnEnter
 			unmountOnExit
 		>
-			<aside className="side-drawer">
-				<nav className="side-drawer-nav" onClick={props.handleCloseDrawer}>
+			<aside className="drawer">
+				<nav className="drawer-nav" onClick={props.handleCloseDrawer}>
 					<NavLinks />
 				</nav>
 			</aside>
@@ -22,6 +22,6 @@ export default function SideDrawer(props) {
 	);
 	return ReactDOM.createPortal(
 		content,
-		document.getElementById("side-drawer-portal")
+		document.getElementById("drawer-portal")
 	);
 }

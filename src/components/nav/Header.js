@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Backdrop from "../Backdrop";
+import Backdrop from "../ui/Backdrop";
+import Drawer from "./Drawer";
 import "./Header.css";
 import HeaderNav from "./HeaderNav";
-import SideDrawer from "./SideDrawer";
 
 export default function Header() {
 	const [drawerIsOpen, setDrawerIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function Header() {
 	return (
 		<React.Fragment>
 			{drawerIsOpen && <Backdrop onClick={closeDrawer} />}
-			<SideDrawer isOpen={drawerIsOpen} handleCloseDrawer={closeDrawer} />
+			<Drawer isOpen={drawerIsOpen} handleCloseDrawer={closeDrawer} />
 
 			<header className="header">
 				<button className="header__menu-btn" onClick={openDrawer}>
