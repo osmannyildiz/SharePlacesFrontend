@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "../form/Button";
 import Card from "../ui/Card";
+import Map from "../ui/Map";
 import Modal from "../ui/Modal";
 import "./PlaceListItem.css";
 
@@ -45,7 +46,7 @@ export default function PlaceListItem(props) {
 				footerClassName="place-list-item__modal-actions"
 			>
 				<div className="map-wrapper">
-					<h2>THE MAP!</h2>
+					<Map center={props.place.coordinates} zoom={16} />
 				</div>
 			</Modal>
 		</React.Fragment>

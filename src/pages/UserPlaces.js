@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import PlaceList from "../components/places/PlaceList";
 
 export default function UserPlaces() {
+	const params = useParams();
+
 	const PLACES = [
 		{
 			id: 1,
@@ -12,7 +14,7 @@ export default function UserPlaces() {
 			imageUrl:
 				"https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
 			address: "20 W 34th St, New York, NY 10001",
-			location: {
+			coordinates: {
 				lat: 40.7484405,
 				lng: -73.9878584,
 			},
@@ -25,7 +27,7 @@ export default function UserPlaces() {
 			imageUrl:
 				"https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
 			address: "20 W 34th St, New York, NY 10001",
-			location: {
+			coordinates: {
 				lat: 40.7484405,
 				lng: -73.9878584,
 			},
@@ -38,14 +40,13 @@ export default function UserPlaces() {
 			imageUrl:
 				"https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
 			address: "20 W 34th St, New York, NY 10001",
-			location: {
+			coordinates: {
 				lat: 40.7484405,
 				lng: -73.9878584,
 			},
 		},
 	];
 
-	const params = useParams();
 	const USER_PLACES = PLACES.filter(
 		(place) => place.userId === parseInt(params.userId)
 	);
