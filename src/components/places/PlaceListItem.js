@@ -46,7 +46,11 @@ export default function PlaceListItem(props) {
 				footerClassName="place-list-item__modal-actions"
 			>
 				<div className="map-wrapper">
-					<Map center={props.place.coordinates} zoom={16} />
+					<Map
+						center={props.place.coordinates}
+						zoom={19}
+						placeId={props.place.id}
+					/>
 				</div>
 			</Modal>
 		</React.Fragment>
