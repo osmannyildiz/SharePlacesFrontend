@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../components/form/Input";
+import { Validators } from "../util/validation";
 import "./AddPlace.css";
 
 export default function AddPlace() {
@@ -9,7 +10,7 @@ export default function AddPlace() {
 				type="text"
 				name="title"
 				label="Title"
-				validators={[]}
+				validators={[Validators.required()]}
 				onInput={null}
 			/>
 		</form>
