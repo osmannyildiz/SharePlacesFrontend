@@ -5,7 +5,13 @@ import "./AddPlace.css";
 export default function AddPlace() {
 	return (
 		<form className="place-add-form">
-			<Input type="text" name="title" label="Title" validators={[]} />
+			<Input
+				type="text"
+				name="title"
+				label="Title"
+				validators={[]}
+				onInput={null}
+			/>
 		</form>
 	);
 }
