@@ -32,7 +32,7 @@ export default function PlaceListItem(props) {
 						<Button inverse onClick={openMap}>
 							VIEW ON MAP
 						</Button>
-						<Button to={`/places/${props.place.id}`}>EDIT</Button>
+						<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
 						<Button danger>DELETE</Button>
 					</div>
 				</Card>

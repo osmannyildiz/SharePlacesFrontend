@@ -1,6 +1,8 @@
 import React, { useCallback, useReducer } from "react";
+import { useParams } from "react-router-dom";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import { PLACES } from "../util/dummyData";
 import { Validators } from "../util/validation";
 import "./common/form.css";
 
@@ -8,7 +10,9 @@ class FormReducerActionTypes {
 	static INPUT_CHANGE = "INPUT_CHANGE";
 }
 
-export default function AddPlace() {
+export default function EditPlace() {
+	const params = useParams();
+
 	function formReducer(state, action) {
 		switch (action.type) {
 			case FormReducerActionTypes.INPUT_CHANGE:
@@ -48,10 +52,6 @@ export default function AddPlace() {
 				value: "",
 				isValid: false,
 			},
-			address: {
-				value: "",
-				isValid: false,
-			},
 		},
 		isValid: false,
 	});
@@ -68,6 +68,16 @@ export default function AddPlace() {
 		[formDispatch]
 	);
 
+	const place = PLACES.find((place) => place.id === parseInt(params.placeId));
+	if (!place) {
+		// TODO Handle this better
+		return (
+			<div className="center">
+				<h2>This place doesn't exist!</h2>
+			</div>
+		);
+	}
+
 	function submitHandler(event) {
 		event.preventDefault();
 		// TODO Send form data to backend
@@ -75,13 +85,14 @@ export default function AddPlace() {
 	}
 
 	return (
-		<form className="form place-add-form" onSubmit={submitHandler}>
+		<form className="form place-edit-form" onSubmit={submitHandler}>
 			<Input
 				type="text"
 				name="title"
 				label="Title"
 				validators={[Validators.required()]}
 				onInput={inputHandler}
+				initialValue={place.title}
 			/>
 			<Input
 				as="textarea"
@@ -89,13 +100,7 @@ export default function AddPlace() {
 				label="Description"
 				validators={[Validators.minLength(5)]}
 				onInput={inputHandler}
-			/>
-			<Input
-				type="text"
-				name="address"
-				label="Address"
-				validators={[Validators.minLength(5)]}
-				onInput={inputHandler}
+				initialValue={place.description}
 			/>
 			<Button type="submit" disabled={!formState.isValid}>
 				ADD PLACE
