@@ -1,8 +1,9 @@
-import React, { useReducer } from "react";
-import { validate, ValidationTypes } from "../../util/validation";
+import React, { useEffect, useReducer } from "react";
+import { validate } from "../../util/validation";
 import "./Input.css";
 
 class InputReducerActionTypes {
+	static INIT = "INIT";
 	static CHANGE = "CHANGE";
 	static TOUCH = "TOUCH";
 }
@@ -10,6 +11,11 @@ class InputReducerActionTypes {
 export default function Input(props) {
 	function inputReducer(state, action) {
 		switch (action.type) {
+			case InputReducerActionTypes.INIT:
+				return {
+					...state,
+					...validate(state.value, props.validators),
+				};
 			case InputReducerActionTypes.CHANGE:
 				return {
 					...state,
@@ -35,14 +41,25 @@ export default function Input(props) {
 	}
 	const [inputState, inputDispatch] = useReducer(inputReducer, {
 		value: props.initialValue || "",
-		isValid:
-			props.initialValue ||
-			props.validators.filter(
-				(validator) => validator.type === ValidationTypes.REQUIRED
-			).length === 0,
+		isValid: false,
 		errorText: "",
 		isTouched: false,
 	});
+
+	const { onInput, name } = props;
+	const { value, isValid } = inputState;
+
+	useEffect(() => {
+		onInput(name, value, isValid);
+	}, [onInput, name, value, isValid]);
+
+	useEffect(() => {
+		inputDispatch({
+			type: InputReducerActionTypes.INIT,
+		});
+		onInput(name, value, isValid);
+		// eslint-disable-next-line
+	}, []);
 
 	function changeHandler(event) {
 		inputDispatch({
