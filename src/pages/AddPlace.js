@@ -64,8 +64,14 @@ export default function AddPlace() {
 		[formDispatch]
 	);
 
+	function submitHandler(event) {
+		event.preventDefault();
+		// TODO Send form data to backend
+		console.log(formState.inputs);
+	}
+
 	return (
-		<form className="place-add-form">
+		<form className="place-add-form" onSubmit={submitHandler}>
 			<Input
 				type="text"
 				name="title"
@@ -77,6 +83,13 @@ export default function AddPlace() {
 				as="textarea"
 				name="description"
 				label="Description"
+				validators={[Validators.minLength(5)]}
+				onInput={inputHandler}
+			/>
+			<Input
+				type="text"
+				name="address"
+				label="Address"
 				validators={[Validators.minLength(5)]}
 				onInput={inputHandler}
 			/>
