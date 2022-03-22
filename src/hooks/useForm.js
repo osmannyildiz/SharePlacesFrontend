@@ -2,6 +2,7 @@ import { useCallback, useReducer } from "react";
 
 class FormReducerActionTypes {
 	static INPUT_CHANGE = "INPUT_CHANGE";
+	static SET_DATA = "SET_DATA";
 }
 
 function formReducer(state, action) {
@@ -26,6 +27,12 @@ function formReducer(state, action) {
 				},
 				isValid: formIsValid,
 			};
+		case FormReducerActionTypes.SET_DATA:
+			return {
+				...state,
+				inputs: action.formInputs,
+				isValid: action.formIsValid,
+			};
 		default:
 			console.warn(
 				`Unimplemented action type passed to 'formReducer': ${action.type}`
@@ -35,13 +42,6 @@ function formReducer(state, action) {
 }
 
 const useForm = (inputNames, isInitiallyValid = false) => {
-	// const inputs = {};
-	// for (const inputName of inputNames) {
-	// 	inputs[inputName] = {
-	// 		value: "",
-	// 		isValid: false,
-	// 	};
-	// }
 	const [formState, formDispatch] = useReducer(formReducer, {
 		inputs: {
 			...inputNames.reduce((acc, inputName) => {
@@ -67,7 +67,18 @@ const useForm = (inputNames, isInitiallyValid = false) => {
 		[formDispatch]
 	);
 
-	return [formState, inputHandler];
+	const setFormData = useCallback(
+		(formInputs, formIsValid) => {
+			formDispatch({
+				type: FormReducerActionTypes.SET_DATA,
+				formInputs,
+				formIsValid,
+			});
+		},
+		[formDispatch]
+	);
+
+	return [formState, inputHandler, setFormData];
 };
 
 export default useForm;
