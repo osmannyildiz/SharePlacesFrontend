@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from "react";
-import { validate } from "../../util/validation";
+import { validate } from "../../utils/validation";
 import "./Input.css";
 
 class InputReducerActionTypes {

@@ -1,72 +1,16 @@
-import React, { useCallback, useReducer } from "react";
+import React from "react";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
-import { Validators } from "../util/validation";
-import "./common/form.css";
-
-class FormReducerActionTypes {
-	static INPUT_CHANGE = "INPUT_CHANGE";
-}
+import useForm from "../hooks/useForm";
+import "../styles/form.css";
+import { Validators } from "../utils/validation";
 
 export default function AddPlace() {
-	function formReducer(state, action) {
-		switch (action.type) {
-			case FormReducerActionTypes.INPUT_CHANGE:
-				let formIsValid = true;
-				for (const inputName in state.inputs) {
-					if (inputName === action.inputName) {
-						formIsValid = formIsValid && action.isValid;
-					} else {
-						formIsValid = formIsValid && state.inputs[inputName].isValid;
-					}
-				}
-				return {
-					...state,
-					inputs: {
-						...state.inputs,
-						[action.inputName]: {
-							value: action.value,
-							isValid: action.isValid,
-						},
-					},
-					isValid: formIsValid,
-				};
-			default:
-				console.warn(
-					`Unimplemented action type passed to 'formReducer': ${action.type}`
-				);
-				return state;
-		}
-	}
-	const [formState, formDispatch] = useReducer(formReducer, {
-		inputs: {
-			title: {
-				value: "",
-				isValid: false,
-			},
-			description: {
-				value: "",
-				isValid: false,
-			},
-			address: {
-				value: "",
-				isValid: false,
-			},
-		},
-		isValid: false,
-	});
-
-	const inputHandler = useCallback(
-		(name, value, isValid) => {
-			formDispatch({
-				type: FormReducerActionTypes.INPUT_CHANGE,
-				inputName: name,
-				value,
-				isValid,
-			});
-		},
-		[formDispatch]
-	);
+	const [formState, inputHandler] = useForm([
+		"title",
+		"description",
+		"address",
+	]);
 
 	function submitHandler(event) {
 		event.preventDefault();

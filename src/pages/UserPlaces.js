@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import PlaceList from "../components/places/PlaceList";
-import { PLACES } from "../util/dummyData";
+import { PLACES } from "../utils/dummyData";
 
 export default function UserPlaces() {
 	const params = useParams();
