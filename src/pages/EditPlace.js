@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import Card from "../components/ui/Card";
 import useForm from "../hooks/useForm";
 import "../styles/form.css";
 import { PLACES } from "../utils/dummyData";
@@ -20,23 +21,25 @@ export default function EditPlace() {
 	const { placeId } = params;
 	useEffect(() => {
 		setTimeout(() => {
-			const place = PLACES.find((place) => place.id === parseInt(placeId));
+			const place = PLACES.find((place) => place.id === parseInt(placeId)); // `undefined` if not found
 			setPlace(place);
-			setFormData(
-				{
-					title: {
-						value: place.title,
-						isValid: true,
+			if (place) {
+				setFormData(
+					{
+						title: {
+							value: place.title,
+							isValid: true,
+						},
+						description: {
+							value: place.description,
+							isValid: true,
+						},
 					},
-					description: {
-						value: place.description,
-						isValid: true,
-					},
-				},
-				true
-			);
+					true
+				);
+			}
 			console.log("hey");
-		}, 3000);
+		}, 2000);
 	}, [placeId, setFormData]);
 
 	function submitHandler(event) {
@@ -45,7 +48,23 @@ export default function EditPlace() {
 		console.log(formState.inputs);
 	}
 
-	if (place) {
+	if (place === null) {
+		return (
+			<div className="center">
+				<Card>
+					<h2>Loading...</h2>
+				</Card>
+			</div>
+		);
+	} else if (place === undefined) {
+		return (
+			<div className="center">
+				<Card>
+					<h2>This place doesn't exist!</h2>
+				</Card>
+			</div>
+		);
+	} else {
 		return (
 			<form className="form place-edit-form" onSubmit={submitHandler}>
 				<Input
@@ -68,12 +87,6 @@ export default function EditPlace() {
 					ADD PLACE
 				</Button>
 			</form>
-		);
-	} else {
-		return (
-			<div className="center">
-				<h2>Loading...</h2>
-			</div>
 		);
 	}
 }

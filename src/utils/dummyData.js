@@ -12,7 +12,7 @@ export const PLACES = [
 	{
 		id: 1,
 		userId: 1,
-		title: "Empire State Building",
+		title: "Empire State Building 1",
 		description: "One of the most famous skyscrapers in the world!",
 		imageUrl:
 			"https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
@@ -25,7 +25,7 @@ export const PLACES = [
 	{
 		id: 2,
 		userId: 1,
-		title: "Empire State Building",
+		title: "Empire State Building 2",
 		description: "One of the most famous skyscrapers in the world!",
 		imageUrl:
 			"https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
@@ -38,7 +38,7 @@ export const PLACES = [
 	{
 		id: 3,
 		userId: 2,
-		title: "Empire State Building",
+		title: "Empire State Building 3",
 		description: "One of the most famous skyscrapers in the world!",
 		imageUrl:
 			"https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
