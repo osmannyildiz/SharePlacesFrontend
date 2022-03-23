@@ -40,12 +40,8 @@
 	margin: 0.5rem;
 }
 
-.place-list-item__modal-content {
+.place-list-item__modal-content--map {
 	padding: 0;
-}
-
-.place-list-item__modal-actions {
-	text-align: right;
 }
 
 @media (min-width: 768px) {

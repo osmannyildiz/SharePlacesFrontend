@@ -7,13 +7,17 @@ import "./PlaceListItem.css";
 
 export default function PlaceListItem(props) {
 	const [mapIsOpen, setMapIsOpen] = useState(false);
+	const [deleteIsOpen, setDeleteIsOpen] = useState(false);
 
-	function openMap() {
-		setMapIsOpen(true);
-	}
+	const openMap = () => setMapIsOpen(true);
+	const closeMap = () => setMapIsOpen(false);
+	const openDelete = () => setDeleteIsOpen(true);
+	const closeDelete = () => setDeleteIsOpen(false);
 
-	function closeMap() {
-		setMapIsOpen(false);
+	function deleteHandler(event) {
+		// TODO Implement backend
+		console.log("DELETE");
+		closeDelete();
 	}
 
 	return (
@@ -29,11 +33,11 @@ export default function PlaceListItem(props) {
 						<p>{props.place.description}</p>
 					</div>
 					<div className="place-list-item__actions">
-						<Button inverse onClick={openMap}>
-							VIEW ON MAP
-						</Button>
+						<Button onClick={openMap}>VIEW ON MAP</Button>
 						<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
-						<Button danger>DELETE</Button>
+						<Button danger onClick={openDelete}>
+							DELETE
+						</Button>
 					</div>
 				</Card>
 			</li>
@@ -41,9 +45,8 @@ export default function PlaceListItem(props) {
 				isOpen={mapIsOpen}
 				onCancel={closeMap}
 				header={props.place.address}
-				bodyClassName="place-list-item__modal-content"
+				bodyClassName="place-list-item__modal-content--map"
 				footer={<Button onClick={closeMap}>CLOSE</Button>}
-				footerClassName="place-list-item__modal-actions"
 			>
 				<div className="map-wrapper">
 					<Map
@@ -52,6 +55,27 @@ export default function PlaceListItem(props) {
 						placeId={props.place.id}
 					/>
 				</div>
+			</Modal>
+			<Modal
+				isOpen={deleteIsOpen}
+				onCancel={closeDelete}
+				header="Delete Place"
+				footer={
+					<React.Fragment>
+						<Button inverse onClick={closeDelete}>
+							CANCEL
+						</Button>
+						<Button danger onClick={deleteHandler}>
+							DELETE
+						</Button>
+					</React.Fragment>
+				}
+			>
+				<p>Are you sure you want to delete this place?</p>
+				<p>{props.place.title}</p>
+				<p>
+					<strong>This operation cannot be undone.</strong>
+				</p>
 			</Modal>
 		</React.Fragment>
 	);

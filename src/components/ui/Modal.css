@@ -11,7 +11,7 @@
 }
 
 .modal__header {
-	padding: 1rem 0.5rem;
+	padding: 1rem 1rem;
 	color: white;
 	background-color: #2a006e;
 }
@@ -21,11 +21,17 @@
 }
 
 .modal__body {
-	padding: 1rem 0.5rem;
+	padding: 1rem 1rem;
 }
 
 .modal__footer {
-	padding: 1rem 0.5rem;
+	padding: 1rem 1rem;
+	text-align: right;
+}
+
+.modal__footer button,
+.modal__footer a {
+	margin-left: 1rem;
 }
 
 @media (min-width: 768px) {
