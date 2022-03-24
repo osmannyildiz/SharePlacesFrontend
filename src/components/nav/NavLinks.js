@@ -9,23 +9,36 @@ export default function NavLinks() {
 	return (
 		<ul className="nav-links">
 			<li>
-				<NavLink to="/" exact>
+				<NavLink className="nav-link" to="/" exact>
 					ALL USERS
 				</NavLink>
 			</li>
-			{authContext.isLoggedIn && (
-				<li>
-					<NavLink to="/users/1/places">MY PLACES</NavLink>
-				</li>
-			)}
-			{authContext.isLoggedIn && (
-				<li>
-					<NavLink to="/places/add">ADD PLACE</NavLink>
-				</li>
-			)}
 			{!authContext.isLoggedIn && (
 				<li>
-					<NavLink to="/auth">AUTHENTICATE</NavLink>
+					<NavLink className="nav-link" to="/auth">
+						AUTHENTICATE
+					</NavLink>
+				</li>
+			)}
+			{authContext.isLoggedIn && (
+				<li>
+					<NavLink className="nav-link" to="/users/1/places">
+						MY PLACES
+					</NavLink>
+				</li>
+			)}
+			{authContext.isLoggedIn && (
+				<li>
+					<NavLink className="nav-link" to="/places/add">
+						ADD PLACE
+					</NavLink>
+				</li>
+			)}
+			{authContext.isLoggedIn && (
+				<li>
+					<button className="nav-link" onClick={authContext.logout}>
+						LOGOUT
+					</button>
 				</li>
 			)}
 		</ul>

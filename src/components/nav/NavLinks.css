@@ -14,7 +14,7 @@
 	margin: 1rem;
 }
 
-.nav-links a {
+.nav-links .nav-link {
 	padding: 0.5rem;
 	color: #292929;
 	border: 1px solid transparent;
@@ -22,9 +22,9 @@
 	text-decoration: none;
 }
 
-.nav-links a:hover,
-.nav-links a:active,
-.nav-links a.active {
+.nav-links .nav-link:hover,
+.nav-links .nav-link:active,
+.nav-links .nav-link.active {
 	color: #292929;
 	background-color: #ffd900;
 	/* border-color: #292929; */
@@ -58,7 +58,7 @@
 		margin: 0 0.5rem;
 	}
 
-	.nav-links a {
+	.nav-links .nav-link {
 		color: white;
 		text-decoration: none;
 	}

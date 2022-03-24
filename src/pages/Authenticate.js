@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
 import { Validators } from "../utils/validation";
 import "./Authenticate.css";
 
 export default function Authenticate() {
+	const authContext = useContext(AuthContext);
+
 	const [formState, inputHandler, setFormData] = useForm(["email", "password"]);
 
 	const [isLoginMode, setIsLoginMode] = useState(true);
@@ -41,6 +44,10 @@ export default function Authenticate() {
 		event.preventDefault();
 		// TODO Send form data to backend
 		console.log(formState.inputs);
+		// TODO Login only if backend approves
+		if (true) {
+			authContext.login();
+		}
 	}
 
 	return (

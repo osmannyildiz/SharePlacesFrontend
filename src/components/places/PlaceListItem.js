@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import AuthContext from "../../contexts/authContext";
 import Button from "../form/Button";
 import Card from "../ui/Card";
 import Map from "../ui/Map";
@@ -6,6 +7,8 @@ import Modal from "../ui/Modal";
 import "./PlaceListItem.css";
 
 export default function PlaceListItem(props) {
+	const authContext = useContext(AuthContext);
+
 	const [mapIsOpen, setMapIsOpen] = useState(false);
 	const [deleteIsOpen, setDeleteIsOpen] = useState(false);
 
@@ -34,10 +37,14 @@ export default function PlaceListItem(props) {
 					</div>
 					<div className="place-list-item__actions">
 						<Button onClick={openMap}>VIEW ON MAP</Button>
-						<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
-						<Button danger onClick={openDelete}>
-							DELETE
-						</Button>
+						{authContext.isLoggedIn && (
+							<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
+						)}
+						{authContext.isLoggedIn && (
+							<Button danger onClick={openDelete}>
+								DELETE
+							</Button>
+						)}
 					</div>
 				</Card>
 			</li>
