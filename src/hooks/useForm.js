@@ -10,6 +10,9 @@ function formReducer(state, action) {
 		case FormReducerActionTypes.INPUT_CHANGE:
 			let formIsValid = true;
 			for (const inputName in state.inputs) {
+				if (state.inputs[inputName] === undefined) {
+					continue;
+				}
 				if (inputName === action.inputName) {
 					formIsValid = formIsValid && action.isValid;
 				} else {

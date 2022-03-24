@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
 import useForm from "../hooks/useForm";
@@ -6,7 +6,36 @@ import { Validators } from "../utils/validation";
 import "./Authenticate.css";
 
 export default function Authenticate() {
-	const [formState, inputHandler] = useForm(["email", "password"]);
+	const [formState, inputHandler, setFormData] = useForm(["email", "password"]);
+
+	const [isLoginMode, setIsLoginMode] = useState(true);
+
+	const switchMode = () => {
+		if (!isLoginMode) {
+			// Switching to login mode
+			setFormData(
+				{
+					...formState.inputs,
+					name: undefined,
+				},
+				formState.inputs.email.isValid && formState.inputs.password.isValid
+			);
+		} else {
+			// Switching to register mode
+			// (Actually it still works if we omit this whole else block)
+			setFormData(
+				{
+					...formState.inputs,
+					name: {
+						value: "",
+						isValid: false,
+					},
+				},
+				false
+			);
+		}
+		setIsLoginMode((isLoginMode) => !isLoginMode);
+	};
 
 	function submitHandler(event) {
 		event.preventDefault();
@@ -15,26 +44,46 @@ export default function Authenticate() {
 	}
 
 	return (
-		<form className="form auth-form" onSubmit={submitHandler}>
-			<h2>Login</h2>
-			<hr />
-			<Input
-				type="email"
-				name="email"
-				label="E-mail"
-				validators={[Validators.email()]}
-				onInput={inputHandler}
-			/>
-			<Input
-				type="password"
-				name="password"
-				label="Password"
-				validators={[Validators.minLength(6)]}
-				onInput={inputHandler}
-			/>
-			<Button type="submit" disabled={!formState.isValid}>
-				LOGIN
-			</Button>
-		</form>
+		<React.Fragment>
+			<form className="form auth-form" onSubmit={submitHandler}>
+				<h2>{isLoginMode ? "Login" : "Register"}</h2>
+				<hr />
+				{!isLoginMode && (
+					<Input
+						type="text"
+						name="name"
+						label="Your Name"
+						validators={[Validators.required()]}
+						onInput={inputHandler}
+					/>
+				)}
+				<Input
+					type="email"
+					name="email"
+					label="E-mail"
+					validators={[Validators.email()]}
+					onInput={inputHandler}
+				/>
+				<Input
+					type="password"
+					name="password"
+					label="Password"
+					validators={[Validators.minLength(6)]}
+					onInput={inputHandler}
+				/>
+				<Button type="submit" disabled={!formState.isValid}>
+					{isLoginMode ? "LOGIN" : "REGISTER"}
+				</Button>
+				<br />
+				<Button
+					type="button"
+					inverse
+					className="switch-btn"
+					onClick={switchMode}
+				>
+					SWITCH TO {isLoginMode ? "REGISTER" : "LOGIN"}
+				</Button>
+			</form>
+		</React.Fragment>
 	);
 }

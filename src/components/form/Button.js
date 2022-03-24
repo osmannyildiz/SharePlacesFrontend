@@ -8,6 +8,7 @@ export default function Button(props) {
 		button--${props.size || "default"}
 		${props.inverse && "button--inverse"}
 		${props.danger && "button--danger"}
+		${props.className || ""}
 	`;
 
 	if (props.href) {
