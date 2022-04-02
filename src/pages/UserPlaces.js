@@ -6,9 +6,7 @@ import { PLACES } from "../utils/dummyData";
 export default function UserPlaces() {
 	const params = useParams();
 
-	const USER_PLACES = PLACES.filter(
-		(place) => place.userId === parseInt(params.userId)
-	);
+	const USER_PLACES = PLACES.filter((place) => place.userId === params.userId);
 
 	return <PlaceList places={USER_PLACES} />;
 }

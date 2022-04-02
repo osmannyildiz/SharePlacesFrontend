@@ -21,7 +21,7 @@ export default function EditPlace() {
 	const { placeId } = params;
 	useEffect(() => {
 		setTimeout(() => {
-			const place = PLACES.find((place) => place.id === parseInt(placeId)); // `undefined` if not found
+			const place = PLACES.find((place) => place.id === placeId); // `undefined` if not found
 			setPlace(place);
 			if (place) {
 				setFormData(

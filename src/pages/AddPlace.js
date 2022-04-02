@@ -38,7 +38,7 @@ export default function AddPlace() {
 				type="text"
 				name="address"
 				label="Address"
-				validators={[Validators.minLength(5)]}
+				validators={[Validators.required()]}
 				onInput={inputHandler}
 			/>
 			<Button type="submit" disabled={!formState.isValid}>
