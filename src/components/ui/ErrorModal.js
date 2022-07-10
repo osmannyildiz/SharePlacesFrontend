@@ -1,3 +1,4 @@
+import React from 'react';
 import Button from "../form/Button";
 import Modal from "./Modal";
 

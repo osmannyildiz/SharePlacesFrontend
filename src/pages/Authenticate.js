@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
 import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
@@ -65,8 +66,7 @@ export default function Authenticate() {
 				console.log(respData);
 
 				if (!respData.ok) {
-					setError(respData.message);
-					return;
+					throw new Error(respData.message);
 				}
 
 				setIsLoading(false);
@@ -81,6 +81,7 @@ export default function Authenticate() {
 
 	return (
 		<React.Fragment>
+			<ErrorModal error={error} onCancel={() => setError(null)} />
 			<form className="form auth-form" onSubmit={submitHandler}>
 				{isLoading && <Spinner asOverlay />}
 				<h2>{isLoginMode ? "Login" : "Register"}</h2>
