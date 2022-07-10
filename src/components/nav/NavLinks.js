@@ -22,7 +22,10 @@ export default function NavLinks() {
 			)}
 			{authContext.isLoggedIn && (
 				<li>
-					<NavLink className="nav-link" to="/users/1/places">
+					<NavLink
+						className="nav-link"
+						to={`/users/${authContext.userId}/places`}
+					>
 						MY PLACES
 					</NavLink>
 				</li>

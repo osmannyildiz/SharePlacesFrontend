@@ -49,13 +49,13 @@ export default function PlaceListItem(props) {
 					</div>
 					<div className="place-list-item__actions">
 						<Button onClick={openMap}>VIEW ON MAP</Button>
-						{authContext.isLoggedIn && (
-							<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
-						)}
-						{authContext.isLoggedIn && (
-							<Button danger onClick={openDelete}>
-								DELETE
-							</Button>
+						{props.place.user === authContext.userId && (
+							<React.Fragment>
+								<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
+								<Button danger onClick={openDelete}>
+									DELETE
+								</Button>
+							</React.Fragment>
 						)}
 					</div>
 				</Card>
