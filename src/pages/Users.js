@@ -2,37 +2,26 @@ import React, { useEffect, useState } from "react";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
 import UserList from "../components/users/UserList";
+import useHttpClient from "../hooks/useHttpClient";
 
 export default function Users() {
 	const [users, setUsers] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
+	const [sendRequest, isLoading, error, clearError] = useHttpClient();
 
 	useEffect(() => {
 		(async () => {
-			setIsLoading(true);
 			try {
-				const resp = await fetch("http://localhost:5000/api/users");
-				const respData = await resp.json();
-				console.log(respData);
-
-				if (!respData.ok) {
-					throw new Error(respData.message);
-				}
-
+				const respData = await sendRequest("http://localhost:5000/api/users");
 				setUsers(respData.data);
-				setIsLoading(false);
 			} catch (err) {
 				console.error(err);
-				setError(err.message);
-				setIsLoading(false);
 			}
 		})();
-	}, []);
+	}, [sendRequest]);
 
 	return (
 		<React.Fragment>
-			<ErrorModal error={error} onCancel={() => setError(null)} />
+			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
 			{!isLoading && <UserList users={users} />}
 		</React.Fragment>
