@@ -15,11 +15,14 @@ import Users from "./pages/Users";
 
 function App() {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
-	const login = useCallback(() => {
+	const [userId, setUserId] = useState(false);
+	const login = useCallback((userId) => {
 		setIsLoggedIn(true);
+		setUserId(userId);
 	}, []);
 	const logout = useCallback(() => {
 		setIsLoggedIn(false);
+		setUserId(null);
 	}, []);
 
 	let routes;
@@ -59,7 +62,7 @@ function App() {
 	}
 
 	return (
-		<AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+		<AuthContext.Provider value={{ isLoggedIn, userId, login, logout }}>
 			<Router>
 				<Header />
 				<main>{routes}</main>

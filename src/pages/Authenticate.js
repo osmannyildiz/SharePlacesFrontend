@@ -59,7 +59,7 @@ export default function Authenticate() {
 						password: formState.inputs.password.value,
 					})
 				);
-				authContext.login();
+				authContext.login(respData.data.id);
 			} catch (err) {
 				console.error(err);
 			}
@@ -77,7 +77,7 @@ export default function Authenticate() {
 						password: formState.inputs.password.value,
 					})
 				);
-				authContext.login();
+				authContext.login(respData.data.id);
 			} catch (err) {
 				console.error(err);
 			}

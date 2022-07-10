@@ -19,7 +19,7 @@ export default function UserListItem(props) {
 						<h2>{props.user.name}</h2>
 						<h3>
 							{props.user.places.length}{" "}
-							{props.user.placeCount === 1 ? "place" : "places"}
+							{props.user.places.length === 1 ? "place" : "places"}
 						</h3>
 					</div>
 				</Link>
