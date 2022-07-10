@@ -8,7 +8,7 @@ export default function ErrorModal(props) {
 			onCancel={props.onCancel}
 			header="An Error Occurred!"
 			isOpen={!!props.error}
-			footer={<Button onClick={props.onCancel}>Okay</Button>}
+			footer={<Button onClick={props.onCancel}>OKAY</Button>}
 		>
 			<p>{props.error}</p>
 		</Modal>

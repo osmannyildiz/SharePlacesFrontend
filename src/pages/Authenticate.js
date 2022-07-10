@@ -5,17 +5,16 @@ import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
 import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
+import useHttpClient from "../hooks/useHttpClient";
 import { Validators } from "../utils/validation";
 import "./Authenticate.css";
 
 export default function Authenticate() {
 	const authContext = useContext(AuthContext);
 
-	const [formState, inputHandler, setFormData] = useForm(["email", "password"]);
-
 	const [isLoginMode, setIsLoginMode] = useState(true);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
+	const [formState, inputHandler, setFormData] = useForm(["email", "password"]);
+	const [sendRequest, isLoading, error, clearError] = useHttpClient();
 
 	const switchMode = () => {
 		if (!isLoginMode) {
@@ -48,66 +47,46 @@ export default function Authenticate() {
 		event.preventDefault();
 		// TODO Send form data to backend
 		if (isLoginMode) {
-			setIsLoading(true);
 			try {
-				const resp = await fetch("http://localhost:5000/api/users/login", {
-					method: "POST",
-					headers: {
+				const respData = await sendRequest(
+					"http://localhost:5000/api/users/login",
+					"POST",
+					{
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({
+					JSON.stringify({
 						email: formState.inputs.email.value,
 						password: formState.inputs.password.value,
-					}),
-				});
-				const respData = await resp.json();
-				console.log(respData);
-
-				if (!respData.ok) {
-					throw new Error(respData.message);
-				}
-
-				setIsLoading(false);
+					})
+				);
 				authContext.login();
 			} catch (err) {
 				console.error(err);
-				setError(err.message);
-				setIsLoading(false);
 			}
 		} else {
-			setIsLoading(true);
 			try {
-				const resp = await fetch("http://localhost:5000/api/users/register", {
-					method: "POST",
-					headers: {
+				const respData = await sendRequest(
+					"http://localhost:5000/api/users/register",
+					"POST",
+					{
 						"Content-Type": "application/json",
 					},
-					body: JSON.stringify({
+					JSON.stringify({
 						name: formState.inputs.name.value,
 						email: formState.inputs.email.value,
 						password: formState.inputs.password.value,
-					}),
-				});
-				const respData = await resp.json();
-				console.log(respData);
-
-				if (!respData.ok) {
-					throw new Error(respData.message);
-				}
-
-				setIsLoading(false);
+					})
+				);
 				authContext.login();
 			} catch (err) {
 				console.error(err);
-				setError(err.message);
-				setIsLoading(false);
 			}
 		}
 	}
 
 	return (
 		<React.Fragment>
-			<ErrorModal error={error} onCancel={() => setError(null)} />
+			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
 			<form className="form auth-form" onSubmit={submitHandler}>
 				<h2>{isLoginMode ? "Login" : "Register"}</h2>
