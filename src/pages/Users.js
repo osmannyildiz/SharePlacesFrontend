@@ -22,7 +22,11 @@ export default function Users() {
 	return (
 		<React.Fragment>
 			<ErrorModal error={error} onCancel={clearError} />
-			{isLoading && <Spinner asOverlay />}
+			{isLoading && (
+				<div className="center">
+					<Spinner />
+				</div>
+			)}
 			{!isLoading && <UserList users={users} />}
 		</React.Fragment>
 	);
