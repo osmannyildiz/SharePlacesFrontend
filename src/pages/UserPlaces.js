@@ -23,6 +23,12 @@ export default function UserPlaces() {
 		})();
 	}, [sendRequest, userId]);
 
+	function onDeletePlace(deletedPlaceId) {
+		setUserPlaces((userPlaces) =>
+			userPlaces.filter((place) => place.id !== deletedPlaceId)
+		);
+	}
+
 	return (
 		<React.Fragment>
 			<ErrorModal error={error} onCancel={clearError} />
@@ -31,7 +37,9 @@ export default function UserPlaces() {
 					<Spinner />
 				</div>
 			)}
-			<PlaceList places={userPlaces} />
+			{!isLoading && (
+				<PlaceList places={userPlaces} onDeletePlace={onDeletePlace} />
+			)}
 		</React.Fragment>
 	);
 }

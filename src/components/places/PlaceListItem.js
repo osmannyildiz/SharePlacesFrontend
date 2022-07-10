@@ -1,30 +1,42 @@
 import React, { useContext, useState } from "react";
 import AuthContext from "../../contexts/authContext";
+import useHttpClient from "../../hooks/useHttpClient";
 import Button from "../form/Button";
 import Card from "../ui/Card";
+import ErrorModal from "../ui/ErrorModal";
 import Map from "../ui/Map";
 import Modal from "../ui/Modal";
+import Spinner from "../ui/Spinner";
 import "./PlaceListItem.css";
 
 export default function PlaceListItem(props) {
-	const authContext = useContext(AuthContext);
-
 	const [mapIsOpen, setMapIsOpen] = useState(false);
 	const [deleteIsOpen, setDeleteIsOpen] = useState(false);
+	const authContext = useContext(AuthContext);
+	const [sendRequest, isLoading, error, clearError] = useHttpClient();
 
 	const openMap = () => setMapIsOpen(true);
 	const closeMap = () => setMapIsOpen(false);
 	const openDelete = () => setDeleteIsOpen(true);
 	const closeDelete = () => setDeleteIsOpen(false);
 
-	function deleteHandler(event) {
-		// TODO Implement backend
-		console.log("DELETE");
+	async function deleteHandler(event) {
 		closeDelete();
+		try {
+			await sendRequest(
+				`http://localhost:5000/api/places/${props.place.id}`,
+				"DELETE"
+			);
+			props.onDeletePlace(props.place.id);
+		} catch (err) {
+			console.error(err);
+		}
 	}
 
 	return (
 		<React.Fragment>
+			<ErrorModal error={error} onCancel={clearError} />
+			{isLoading && <Spinner asOverlay />}
 			<li className="place-list-item">
 				<Card className="place-list-item__content">
 					<div className="place-list-item__image">

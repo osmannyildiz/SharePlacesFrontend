@@ -19,7 +19,11 @@ export default function PlaceList(props) {
 	return (
 		<ul className="place-list">
 			{props.places.map((place) => (
-				<PlaceListItem place={place} key={place.id} />
+				<PlaceListItem
+					place={place}
+					onDeletePlace={props.onDeletePlace}
+					key={place.id}
+				/>
 			))}
 		</ul>
 	);
