@@ -40,13 +40,34 @@ export default function Authenticate() {
 		setIsLoginMode((isLoginMode) => !isLoginMode);
 	};
 
-	function submitHandler(event) {
+	async function submitHandler(event) {
 		event.preventDefault();
 		// TODO Send form data to backend
-		console.log(formState.inputs);
-		// TODO Login only if backend approves
-		if (true) {
-			authContext.login();
+		if (isLoginMode) {
+		} else {
+			try {
+				const resp = await fetch("http://localhost:5000/api/users/signup", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						name: formState.inputs.name.value,
+						email: formState.inputs.email.value,
+						password: formState.inputs.password.value,
+					}),
+				});
+				const respData = await resp.json();
+				console.log(respData);
+
+				// TODO Login only if backend approves
+				if (!respData.ok) {
+				}
+
+				authContext.login();
+			} catch (err) {
+				console.error(err);
+			}
 		}
 	}
 
