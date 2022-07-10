@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/form/Button";
 import Input from "../components/form/Input";
+import Spinner from "../components/ui/Spinner";
 import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
 import { Validators } from "../utils/validation";
@@ -12,6 +13,8 @@ export default function Authenticate() {
 	const [formState, inputHandler, setFormData] = useForm(["email", "password"]);
 
 	const [isLoginMode, setIsLoginMode] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState(null);
 
 	const switchMode = () => {
 		if (!isLoginMode) {
@@ -45,6 +48,7 @@ export default function Authenticate() {
 		// TODO Send form data to backend
 		if (isLoginMode) {
 		} else {
+			setIsLoading(true);
 			try {
 				const resp = await fetch("http://localhost:5000/api/users/register", {
 					method: "POST",
@@ -60,13 +64,17 @@ export default function Authenticate() {
 				const respData = await resp.json();
 				console.log(respData);
 
-				// TODO Login only if backend approves
 				if (!respData.ok) {
+					setError(respData.message);
+					return;
 				}
 
+				setIsLoading(false);
 				authContext.login();
 			} catch (err) {
 				console.error(err);
+				setError(err.message);
+				setIsLoading(false);
 			}
 		}
 	}
@@ -74,6 +82,7 @@ export default function Authenticate() {
 	return (
 		<React.Fragment>
 			<form className="form auth-form" onSubmit={submitHandler}>
+				{isLoading && <Spinner asOverlay />}
 				<h2>{isLoginMode ? "Login" : "Register"}</h2>
 				<hr />
 				{!isLoginMode && (
