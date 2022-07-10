@@ -46,7 +46,7 @@ export default function Authenticate() {
 		if (isLoginMode) {
 		} else {
 			try {
-				const resp = await fetch("http://localhost:5000/api/users/signup", {
+				const resp = await fetch("http://localhost:5000/api/users/register", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json",
