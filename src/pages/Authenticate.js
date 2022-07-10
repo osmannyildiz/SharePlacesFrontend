@@ -48,9 +48,35 @@ export default function Authenticate() {
 		event.preventDefault();
 		// TODO Send form data to backend
 		if (isLoginMode) {
-		} else {
-			setIsLoading(true);
 			try {
+				setIsLoading(true);
+				const resp = await fetch("http://localhost:5000/api/users/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({
+						email: formState.inputs.email.value,
+						password: formState.inputs.password.value,
+					}),
+				});
+				const respData = await resp.json();
+				console.log(respData);
+
+				if (!respData.ok) {
+					throw new Error(respData.message);
+				}
+
+				setIsLoading(false);
+				authContext.login();
+			} catch (err) {
+				console.error(err);
+				setError(err.message);
+				setIsLoading(false);
+			}
+		} else {
+			try {
+				setIsLoading(true);
 				const resp = await fetch("http://localhost:5000/api/users/register", {
 					method: "POST",
 					headers: {
