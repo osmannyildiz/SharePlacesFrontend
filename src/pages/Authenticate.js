@@ -48,8 +48,8 @@ export default function Authenticate() {
 		event.preventDefault();
 		// TODO Send form data to backend
 		if (isLoginMode) {
+			setIsLoading(true);
 			try {
-				setIsLoading(true);
 				const resp = await fetch("http://localhost:5000/api/users/login", {
 					method: "POST",
 					headers: {
@@ -75,8 +75,8 @@ export default function Authenticate() {
 				setIsLoading(false);
 			}
 		} else {
+			setIsLoading(true);
 			try {
-				setIsLoading(true);
 				const resp = await fetch("http://localhost:5000/api/users/register", {
 					method: "POST",
 					headers: {
@@ -108,8 +108,8 @@ export default function Authenticate() {
 	return (
 		<React.Fragment>
 			<ErrorModal error={error} onCancel={() => setError(null)} />
+			{isLoading && <Spinner asOverlay />}
 			<form className="form auth-form" onSubmit={submitHandler}>
-				{isLoading && <Spinner asOverlay />}
 				<h2>{isLoginMode ? "Login" : "Register"}</h2>
 				<hr />
 				{!isLoginMode && (
