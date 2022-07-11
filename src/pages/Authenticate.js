@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import Button from "../components/form/Button";
+import ImagePicker from "../components/form/ImagePicker";
 import Input from "../components/form/Input";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
@@ -114,6 +115,7 @@ export default function Authenticate() {
 					validators={[Validators.minLength(6)]}
 					onInput={inputHandler}
 				/>
+				{!isLoginMode && <ImagePicker id="image" center />}
 				<Button type="submit" disabled={!formState.isValid}>
 					{isLoginMode ? "LOGIN" : "REGISTER"}
 				</Button>
