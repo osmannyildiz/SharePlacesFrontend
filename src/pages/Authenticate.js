@@ -24,6 +24,7 @@ export default function Authenticate() {
 				{
 					...formState.inputs,
 					name: undefined,
+					image: undefined,
 				},
 				formState.inputs.email.isValid && formState.inputs.password.isValid
 			);
@@ -35,6 +36,10 @@ export default function Authenticate() {
 					...formState.inputs,
 					name: {
 						value: "",
+						isValid: false,
+					},
+					image: {
+						value: null,
 						isValid: false,
 					},
 				},
@@ -115,8 +120,14 @@ export default function Authenticate() {
 					validators={[Validators.minLength(6)]}
 					onInput={inputHandler}
 				/>
-				{!isLoginMode && <ImagePicker id="image" center />}
-				<Button type="submit" disabled={!formState.isValid}>
+				{!isLoginMode && (
+					<ImagePicker name="image" center onInput={inputHandler} />
+				)}
+				<Button
+					type="submit"
+					disabled={!formState.isValid}
+					style={{ marginTop: "1.5rem" }}
+				>
 					{isLoginMode ? "LOGIN" : "REGISTER"}
 				</Button>
 				<br />
