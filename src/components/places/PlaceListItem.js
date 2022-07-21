@@ -40,7 +40,10 @@ export default function PlaceListItem(props) {
 			<li className="place-list-item">
 				<Card className="place-list-item__content">
 					<div className="place-list-item__image">
-						<img src={props.place.imageUrl} alt={props.place.title} />
+						<img
+							src={"http://localhost:5000/" + props.place.imageUrl}
+							alt={props.place.title}
+						/>
 					</div>
 					<div className="place-list-item__info">
 						<h2>{props.place.title}</h2>

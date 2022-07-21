@@ -6,6 +6,7 @@ export default function ImagePicker(props) {
 	const [imageFile, setImageFile] = useState(null);
 	const [previewUrl, setPreviewUrl] = useState(null);
 	const [isValid, setIsValid] = useState(false);
+	const [isTouched, setIsTouched] = useState(false);
 	const filePickerRef = useRef();
 
 	// Generate preview
@@ -30,6 +31,7 @@ export default function ImagePicker(props) {
 		}
 		setImageFile(_imageFile);
 		setIsValid(_isValid);
+		setIsTouched(true);
 		props.onInput(props.name, _imageFile, _isValid);
 	}
 
@@ -43,8 +45,15 @@ export default function ImagePicker(props) {
 				ref={filePickerRef}
 				onChange={pickImageHandler}
 			/>
-			<div className={`image-picker ${props.center && "center"}`}>
-				<div className="image-picker__preview">
+			<div
+				className={`image-picker ${props.center && "center"} ${
+					!isValid && isTouched && "image-picker--invalid"
+				}`}
+			>
+				<div
+					className="image-picker__preview"
+					style={props.previewWidth ? { width: props.previewWidth } : {}}
+				>
 					{previewUrl ? (
 						<img src={previewUrl} alt="Preview" />
 					) : (

@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Button from "../components/form/Button";
+import ImagePicker from "../components/form/ImagePicker";
 import Input from "../components/form/Input";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
@@ -17,24 +18,24 @@ export default function AddPlace() {
 		"title",
 		"description",
 		"address",
+		"image",
 	]);
 	const [sendRequest, isLoading, error, clearError] = useHttpClient();
 
 	async function submitHandler(event) {
 		event.preventDefault();
+		const formData = new FormData();
+		formData.append("userId", authContext.userId);
+		formData.append("title", formState.inputs.title.value);
+		formData.append("description", formState.inputs.description.value);
+		formData.append("address", formState.inputs.address.value);
+		formData.append("image", formState.inputs.image.value);
 		try {
 			await sendRequest(
 				"http://localhost:5000/api/places",
 				"POST",
-				{
-					"Content-Type": "application/json",
-				},
-				JSON.stringify({
-					userId: authContext.userId,
-					title: formState.inputs.title.value,
-					description: formState.inputs.description.value,
-					address: formState.inputs.address.value,
-				})
+				undefined,
+				formData
 			);
 			history.push("/");
 		} catch (err) {
@@ -68,7 +69,12 @@ export default function AddPlace() {
 					validators={[Validators.required()]}
 					onInput={inputHandler}
 				/>
-				<Button type="submit" disabled={!formState.isValid}>
+				<ImagePicker name="image" previewWidth="20rem" onInput={inputHandler} />
+				<Button
+					type="submit"
+					disabled={!formState.isValid}
+					style={{ marginTop: "1.5rem" }}
+				>
 					ADD PLACE
 				</Button>
 			</form>

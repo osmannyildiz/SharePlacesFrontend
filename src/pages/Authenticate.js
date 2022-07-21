@@ -51,7 +51,6 @@ export default function Authenticate() {
 
 	async function submitHandler(event) {
 		event.preventDefault();
-		// TODO Send form data to backend
 		if (isLoginMode) {
 			try {
 				const respData = await sendRequest(
@@ -70,12 +69,12 @@ export default function Authenticate() {
 				console.error(err);
 			}
 		} else {
+			const formData = new FormData();
+			formData.append("name", formState.inputs.name.value);
+			formData.append("email", formState.inputs.email.value);
+			formData.append("password", formState.inputs.password.value);
+			formData.append("image", formState.inputs.image.value);
 			try {
-				const formData = new FormData();
-				formData.append("name", formState.inputs.name.value);
-				formData.append("email", formState.inputs.email.value);
-				formData.append("password", formState.inputs.password.value);
-				formData.append("image", formState.inputs.image.value);
 				const respData = await sendRequest(
 					"http://localhost:5000/api/users/register",
 					"POST",
