@@ -71,17 +71,16 @@ export default function Authenticate() {
 			}
 		} else {
 			try {
+				const formData = new FormData();
+				formData.append("name", formState.inputs.name.value);
+				formData.append("email", formState.inputs.email.value);
+				formData.append("password", formState.inputs.password.value);
+				formData.append("image", formState.inputs.image.value);
 				const respData = await sendRequest(
 					"http://localhost:5000/api/users/register",
 					"POST",
-					{
-						"Content-Type": "application/json",
-					},
-					JSON.stringify({
-						name: formState.inputs.name.value,
-						email: formState.inputs.email.value,
-						password: formState.inputs.password.value,
-					})
+					undefined,
+					formData
 				);
 				authContext.login(respData.data.id);
 			} catch (err) {
