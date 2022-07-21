@@ -11,7 +11,10 @@ export default function UserListItem(props) {
 				<Link to={`/users/${props.user.id}/places`}>
 					<div className="user-list-item__image">
 						<Avatar
-							src={props.user.imageUrl || "/img/default_avatar.png"}
+							src={
+								"http://localhost:5000/" + props.user.imageUrl ||
+								"/img/default_avatar.png"
+							}
 							alt={props.user.name}
 						/>
 					</div>
