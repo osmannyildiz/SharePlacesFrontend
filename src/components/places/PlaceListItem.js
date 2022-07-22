@@ -25,7 +25,10 @@ export default function PlaceListItem(props) {
 		try {
 			await sendRequest(
 				`http://localhost:5000/api/places/${props.place.id}`,
-				"DELETE"
+				"DELETE",
+				{
+					Authorization: "Bearer " + authContext.token,
+				}
 			);
 			props.onDeletePlace(props.place.id);
 		} catch (err) {

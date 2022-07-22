@@ -34,7 +34,9 @@ export default function AddPlace() {
 			await sendRequest(
 				"http://localhost:5000/api/places",
 				"POST",
-				undefined,
+				{
+					Authorization: "Bearer " + authContext.token,
+				},
 				formData
 			);
 			history.push("/");

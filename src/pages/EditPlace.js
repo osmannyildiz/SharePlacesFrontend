@@ -60,6 +60,7 @@ export default function EditPlace() {
 				"PATCH",
 				{
 					"Content-Type": "application/json",
+					Authorization: "Bearer " + authContext.token,
 				},
 				JSON.stringify({
 					title: formState.inputs.title.value,
