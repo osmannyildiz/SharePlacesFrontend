@@ -25,7 +25,6 @@ export default function AddPlace() {
 	async function submitHandler(event) {
 		event.preventDefault();
 		const formData = new FormData();
-		formData.append("userId", authContext.userId);
 		formData.append("title", formState.inputs.title.value);
 		formData.append("description", formState.inputs.description.value);
 		formData.append("address", formState.inputs.address.value);
