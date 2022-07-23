@@ -16,10 +16,15 @@ import Users from "./pages/Users";
 function App() {
 	const [userId, setUserId] = useState(null);
 	const [token, setToken] = useState(null);
-	const login = useCallback((userId, token) => {
+	const login = useCallback((userId, token, autoLoggingIn = false) => {
 		setUserId(userId);
 		setToken(token);
 		localStorage.setItem("authData", JSON.stringify({ userId, token }));
+		if (!autoLoggingIn) {
+			const now = new Date();
+			const newTokenExpiry = new Date(now.getTime() + 1000 * 60 * 60);
+			localStorage.setItem("tokenExpiry", newTokenExpiry.toISOString());
+		}
 	}, []);
 	const logout = useCallback(() => {
 		setUserId(null);
@@ -29,8 +34,16 @@ function App() {
 
 	useEffect(() => {
 		const authData = JSON.parse(localStorage.getItem("authData"));
-		if (authData && authData.userId) {
-			login(authData.userId, authData.token);
+		const storedTokenExpiry = localStorage.getItem("tokenExpiry");
+		const now = new Date();
+
+		if (
+			authData &&
+			authData.userId &&
+			storedTokenExpiry &&
+			new Date(storedTokenExpiry) > now
+		) {
+			login(authData.userId, authData.token, true);
 		}
 	}, [login]);
 
