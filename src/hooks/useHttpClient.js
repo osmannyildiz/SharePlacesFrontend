@@ -22,7 +22,6 @@ const useHttpClient = () => {
 					(ac) => ac !== abortCtrl
 				);
 				const respData = await resp.json();
-				console.log(respData);
 
 				if (!respData.ok) {
 					throw new Error(respData.message);
