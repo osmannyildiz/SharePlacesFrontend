@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import {
 	BrowserRouter as Router,
 	Redirect,
@@ -6,13 +6,17 @@ import {
 	Switch,
 } from "react-router-dom";
 import Header from "./components/nav/Header";
+import Spinner from "./components/ui/Spinner";
 import AuthContext from "./contexts/authContext";
 import useAuth from "./hooks/useAuth";
-import AddPlace from "./pages/AddPlace";
-import Authenticate from "./pages/Authenticate";
-import EditPlace from "./pages/EditPlace";
-import UserPlaces from "./pages/UserPlaces";
-import Users from "./pages/Users";
+import "./styles/form.css";
+
+// Code splitting (lazy load pages)
+const AddPlace = React.lazy(() => import("./pages/AddPlace"));
+const Authenticate = React.lazy(() => import("./pages/Authenticate"));
+const EditPlace = React.lazy(() => import("./pages/EditPlace"));
+const UserPlaces = React.lazy(() => import("./pages/UserPlaces"));
+const Users = React.lazy(() => import("./pages/Users"));
 
 function App() {
 	const { userId, token, login, logout } = useAuth();
@@ -59,7 +63,17 @@ function App() {
 		>
 			<Router>
 				<Header />
-				<main>{routes}</main>
+				<main>
+					<Suspense
+						fallback={
+							<div className="center">
+								<Spinner />
+							</div>
+						}
+					>
+						{routes}
+					</Suspense>
+				</main>
 			</Router>
 		</AuthContext.Provider>
 	);
