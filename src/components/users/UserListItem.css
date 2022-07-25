@@ -5,7 +5,7 @@
 }
 
 .user-list-item__content {
-	padding: 0;
+	padding: 0 !important;
 }
 
 .user-list-item a {
@@ -47,4 +47,3 @@
 .user-list-item__info h3 {
 	margin: 0;
 }
-
