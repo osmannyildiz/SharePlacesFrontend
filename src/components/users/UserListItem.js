@@ -12,8 +12,9 @@ export default function UserListItem(props) {
 					<div className="user-list-item__image">
 						<Avatar
 							src={
-								"http://localhost:5000/" + props.user.imageUrl ||
-								"/img/default_avatar.png"
+								props.user.imageUrl
+									? process.env.REACT_APP_ASSET_URL + "/" + props.user.imageUrl
+									: "/img/default_avatar.png"
 							}
 							alt={props.user.name}
 						/>

@@ -11,7 +11,9 @@ export default function Users() {
 	useEffect(() => {
 		(async () => {
 			try {
-				const respData = await sendRequest("http://localhost:5000/api/users");
+				const respData = await sendRequest(
+					process.env.REACT_APP_BACKEND_API_URL + "/users"
+				);
 				setUsers(respData.data);
 			} catch (err) {
 				console.error(err);

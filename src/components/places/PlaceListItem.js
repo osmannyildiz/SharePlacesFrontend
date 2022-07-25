@@ -24,7 +24,7 @@ export default function PlaceListItem(props) {
 		closeDelete();
 		try {
 			await sendRequest(
-				`http://localhost:5000/api/places/${props.place.id}`,
+				process.env.REACT_APP_BACKEND_API_URL + `/places/${props.place.id}`,
 				"DELETE",
 				{
 					Authorization: "Bearer " + authContext.token,
@@ -44,7 +44,7 @@ export default function PlaceListItem(props) {
 				<Card className="place-list-item__content">
 					<div className="place-list-item__image">
 						<img
-							src={"http://localhost:5000/" + props.place.imageUrl}
+							src={process.env.REACT_APP_ASSET_URL + "/" + props.place.imageUrl}
 							alt={props.place.title}
 						/>
 					</div>

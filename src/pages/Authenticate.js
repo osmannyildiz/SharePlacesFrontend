@@ -54,7 +54,7 @@ export default function Authenticate() {
 		if (isLoginMode) {
 			try {
 				const respData = await sendRequest(
-					"http://localhost:5000/api/users/login",
+					process.env.REACT_APP_BACKEND_API_URL + "/users/login",
 					"POST",
 					{
 						"Content-Type": "application/json",
@@ -76,7 +76,7 @@ export default function Authenticate() {
 			formData.append("image", formState.inputs.image.value);
 			try {
 				const respData = await sendRequest(
-					"http://localhost:5000/api/users/register",
+					process.env.REACT_APP_BACKEND_API_URL + "/users/register",
 					"POST",
 					undefined,
 					formData
