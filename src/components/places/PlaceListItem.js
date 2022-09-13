@@ -76,7 +76,7 @@ export default function PlaceListItem(props) {
 				<div className="map-wrapper">
 					<Map
 						center={props.place.coordinates}
-						zoom={19}
+						zoom={18}
 						placeId={props.place.id}
 					/>
 				</div>

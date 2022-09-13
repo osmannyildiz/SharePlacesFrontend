@@ -1,3 +1,8 @@
+import OlTileLayer from "ol/layer/Tile";
+import OlMap from "ol/Map";
+import { fromLonLat } from "ol/proj";
+import OlOSM from "ol/source/OSM";
+import OlView from "ol/View";
 import React, { useEffect, useRef } from "react";
 import "./Map.css";
 
@@ -7,15 +12,15 @@ export default function Map(props) {
 	const { center, zoom } = props;
 
 	useEffect(() => {
-		new window.ol.Map({
+		new OlMap({
 			target: mapElRef.current.id,
 			layers: [
-				new window.ol.layer.Tile({
-					source: new window.ol.source.OSM(),
+				new OlTileLayer({
+					source: new OlOSM(),
 				}),
 			],
-			view: new window.ol.View({
-				center: window.ol.proj.fromLonLat([center.lng, center.lat]),
+			view: new OlView({
+				center: fromLonLat([center.lng, center.lat]),
 				zoom: zoom,
 			}),
 		});

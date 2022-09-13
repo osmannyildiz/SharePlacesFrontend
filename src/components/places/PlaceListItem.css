@@ -41,7 +41,7 @@
 }
 
 .place-list-item__modal-content--map {
-	padding: 0;
+	padding: 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -54,4 +54,3 @@
 	width: 100%;
 	height: 30rem;
 }
-
