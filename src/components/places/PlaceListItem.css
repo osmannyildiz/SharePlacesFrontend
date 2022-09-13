@@ -3,7 +3,7 @@
 }
 
 .place-list-item__content {
-	padding: 0;
+	padding: 0 !important;
 }
 
 .place-list-item__info {
