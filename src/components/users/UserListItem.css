@@ -4,10 +4,6 @@
 	margin: 1rem;
 }
 
-.user-list-item__content {
-	padding: 0 !important;
-}
-
 .user-list-item a {
 	width: 100%;
 	height: 100%;

@@ -7,7 +7,7 @@ import "./UserListItem.css";
 export default function UserListItem(props) {
 	return (
 		<li className="user-list-item">
-			<Card className="user-list-item__content">
+			<Card className="card--no-padding">
 				<Link to={`/users/${props.user.id}/places`}>
 					<div className="user-list-item__image">
 						<Avatar

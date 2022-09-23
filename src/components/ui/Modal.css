@@ -23,6 +23,9 @@
 .modal__body {
 	padding: 1rem 1rem;
 }
+.modal__body--no-padding {
+	padding: 0;
+}
 
 .modal__footer {
 	padding: 1rem 1rem;
@@ -62,4 +65,3 @@
 	opacity: 0;
 	transition: all 200ms;
 }
-

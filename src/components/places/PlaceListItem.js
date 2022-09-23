@@ -41,7 +41,7 @@ export default function PlaceListItem(props) {
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
 			<li className="place-list-item">
-				<Card className="place-list-item__content">
+				<Card className="card--no-padding">
 					<div className="place-list-item__image">
 						<img
 							src={process.env.REACT_APP_ASSET_URL + "/" + props.place.imageUrl}
@@ -70,7 +70,7 @@ export default function PlaceListItem(props) {
 				isOpen={mapIsOpen}
 				onCancel={closeMap}
 				header={props.place.address}
-				bodyClassName="place-list-item__modal-content--map"
+				bodyClassName="modal__body--no-padding"
 				footer={<Button onClick={closeMap}>CLOSE</Button>}
 			>
 				<div className="map-wrapper">

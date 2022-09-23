@@ -2,10 +2,6 @@
 	margin: 1rem 0;
 }
 
-.place-list-item__content {
-	padding: 0 !important;
-}
-
 .place-list-item__info {
 	padding: 1rem;
 	text-align: center;
@@ -38,10 +34,6 @@
 .place-list-item__actions button,
 .place-list-item__actions a {
 	margin: 0.5rem;
-}
-
-.place-list-item__modal-content--map {
-	padding: 0 !important;
 }
 
 @media (min-width: 768px) {
