@@ -97,8 +97,10 @@ export default function Authenticate() {
 		<>
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
-			<form className="form auth-form" onSubmit={submitHandler}>
-				<h2>{isLoginMode ? "Login" : "Register"}</h2>
+			<form className="auth-form form" onSubmit={submitHandler}>
+				<h2 className="auth-form__heading">
+					{isLoginMode ? "Login" : "Register"}
+				</h2>
 				<hr />
 				{!isLoginMode && (
 					<Input
@@ -137,7 +139,7 @@ export default function Authenticate() {
 				<Button
 					type="button"
 					inverse
-					className="switch-btn"
+					className="auth-form__switch-btn"
 					onClick={switchMode}
 				>
 					SWITCH TO {isLoginMode ? "REGISTER" : "LOGIN"}

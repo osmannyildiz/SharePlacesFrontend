@@ -91,7 +91,7 @@ export default function EditPlace() {
 				</div>
 			)}
 			{place && (
-				<form className="form place-edit-form" onSubmit={submitHandler}>
+				<form className="place-edit-form form" onSubmit={submitHandler}>
 					<Input
 						type="text"
 						name="title"

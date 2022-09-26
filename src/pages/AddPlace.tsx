@@ -53,7 +53,7 @@ export default function AddPlace() {
 		<>
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
-			<form className="form place-add-form" onSubmit={submitHandler}>
+			<form className="place-add-form form" onSubmit={submitHandler}>
 				<Input
 					type="text"
 					name="title"

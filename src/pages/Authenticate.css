@@ -3,11 +3,10 @@
 	text-align: center;
 }
 
-.auth-form h2 {
+.auth-form__heading {
 	margin-top: 0.5rem;
 }
 
-.auth-form .switch-btn {
+.auth-form__switch-btn {
 	margin-top: 1rem;
 }
-
