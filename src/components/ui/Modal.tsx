@@ -1,5 +1,6 @@
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
+import cn from "../../utils/classNamesHelper";
 import Backdrop from "./Backdrop";
 import "./Modal.css";
 
@@ -22,15 +23,15 @@ function ModalOverlay(props: ModalOverlayProps) {
 	};
 
 	const content = (
-		<div className={`modal ${props.className || ""}`} style={props.style}>
+		<div className={cn("modal", props.className)} style={props.style}>
 			<header className="modal__header">
 				<h2>{props.header}</h2>
 			</header>
 			<form onSubmit={props.onSubmit ? props.onSubmit : defaultSubmitHandler}>
-				<div className={`modal__body ${props.bodyClassName || ""}`}>
+				<div className={cn("modal__body", props.bodyClassName)}>
 					{props.children}
 				</div>
-				<footer className={`modal__footer ${props.footerClassName || ""}`}>
+				<footer className={cn("modal__footer", props.footerClassName)}>
 					{props.footer}
 				</footer>
 			</form>

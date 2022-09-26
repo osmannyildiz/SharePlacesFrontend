@@ -1,3 +1,4 @@
+import cn from "../../utils/classNamesHelper";
 import "./Avatar.css";
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 export default function Avatar(props: Props) {
 	return (
-		<div className={`avatar ${props.className}`} style={props.style}>
+		<div className={cn("avatar", props.className)} style={props.style}>
 			<img
 				src={props.src}
 				alt={props.alt}

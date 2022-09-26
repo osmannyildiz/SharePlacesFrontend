@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import cn from "../../utils/classNamesHelper";
 import "./Button.css";
 
 interface Props {
@@ -16,13 +17,13 @@ interface Props {
 }
 
 export default function Button(props: Props) {
-	const className = `
-		button
-		${props.className || ""}
-		button--${props.size || "default"}
-		${props.inverse && "button--inverse"}
-		${props.danger && "button--danger"}
-	`;
+	const className = cn(
+		"button",
+		props.className,
+		props.size && `button--${props.size}`,
+		props.inverse && "button--inverse",
+		props.danger && "button--danger"
+	);
 
 	if (props.href) {
 		return (

@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from "react";
+import cn from "../../utils/classNamesHelper";
 import { runValidations, Validation } from "../../utils/validation";
 import "./Input.css";
 
@@ -135,9 +136,10 @@ export default function Input(props: Props) {
 
 	return (
 		<div
-			className={`form-control ${
+			className={cn(
+				"form-control",
 				!inputState.isValid && inputState.isTouched && "form-control--invalid"
-			}`}
+			)}
 		>
 			<label htmlFor={props.name}>{props.label}</label>
 			{inputEl}

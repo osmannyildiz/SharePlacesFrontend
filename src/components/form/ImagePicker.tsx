@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import FileInputValue from "../../models/FileInputValue";
+import cn from "../../utils/classNamesHelper";
 import Button from "./Button";
 import "./ImagePicker.css";
 
@@ -56,9 +57,11 @@ export default function ImagePicker(props: Props) {
 				onChange={pickImageHandler}
 			/>
 			<div
-				className={`image-picker ${props.center && "center"} ${
+				className={cn(
+					"image-picker",
+					props.center && "center",
 					!isValid && isTouched && "image-picker--invalid"
-				}`}
+				)}
 			>
 				<div
 					className="image-picker__preview"

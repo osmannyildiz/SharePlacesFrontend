@@ -1,3 +1,4 @@
+import cn from "../../utils/classNamesHelper";
 import "./Card.css";
 
 interface Props {
@@ -8,7 +9,7 @@ interface Props {
 
 export default function Card(props: Props) {
 	return (
-		<div className={`card ${props.className || ""}`} style={props.style}>
+		<div className={cn("card", props.className)} style={props.style}>
 			{props.children}
 		</div>
 	);
