@@ -144,7 +144,7 @@ export default function Input(props: Props) {
 			<label htmlFor={props.name}>{props.label}</label>
 			{inputEl}
 			{!inputState.isValid && inputState.isTouched && (
-				<p>{inputState.errorText}</p>
+				<p className="form-control__error-text">{inputState.errorText}</p>
 			)}
 		</div>
 	);

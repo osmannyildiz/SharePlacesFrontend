@@ -1,7 +1,13 @@
 @use "../../styles/core" as *;
 
 .form-control {
-	margin: 1rem 0;
+	margin: 1.5rem 0;
+	&:first-of-type {
+		margin-top: 0;
+	}
+	&:last-of-type {
+		margin-bottom: 0;
+	}
 
 	& label,
 	& input,
@@ -28,11 +34,17 @@
 		background-color: $color-input-background--focus;
 		border-color: $color-input-border--focus;
 	}
+
+	&__error-text {
+		margin: 0.25rem 0;
+	}
 }
 
 .form-control--invalid {
+	$block: ".form-control";
+
 	& label,
-	& p {
+	#{$block}__error-text {
 		color: $color-input-foreground--invalid;
 	}
 
