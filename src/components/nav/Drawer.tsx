@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import "./Drawer.scss";
-import NavLinks from "./NavLinks";
+import NavItems from "./NavItems";
 
 interface Props {
 	isOpen: boolean;
@@ -19,7 +19,7 @@ export default function Drawer(props: Props) {
 		>
 			<aside className="drawer">
 				<nav className="drawer__nav" onClick={props.handleCloseDrawer}>
-					<NavLinks />
+					<NavItems />
 				</nav>
 			</aside>
 		</CSSTransition>

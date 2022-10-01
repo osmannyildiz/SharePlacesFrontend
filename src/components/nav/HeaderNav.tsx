@@ -1,10 +1,10 @@
 import "./HeaderNav.scss";
-import NavLinks from "./NavLinks";
+import NavItems from "./NavItems";
 
 export default function HeaderNav() {
 	return (
 		<nav className="header-nav">
-			<NavLinks />
+			<NavItems />
 		</nav>
 	);
 }
