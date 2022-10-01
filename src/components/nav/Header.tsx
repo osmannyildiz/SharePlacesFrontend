@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import Backdrop from "../ui/Backdrop";
 import Drawer from "./Drawer";
-import "./Header.css";
+import "./Header.scss";
 import HeaderNav from "./HeaderNav";
 
 export default function Header() {
@@ -23,12 +23,14 @@ export default function Header() {
 
 			<header className="header">
 				<button className="header__menu-btn" onClick={openDrawer}>
-					<span />
-					<span />
-					<span />
+					<span className="header__menu-btn-bar" />
+					<span className="header__menu-btn-bar" />
+					<span className="header__menu-btn-bar" />
 				</button>
-				<h1 className="header__title">
-					<Link to="/">YourPlaces</Link>
+				<h1 className="header__brand">
+					<Link to="/" className="header__brand-link">
+						YourPlaces
+					</Link>
 				</h1>
 				<HeaderNav />
 			</header>

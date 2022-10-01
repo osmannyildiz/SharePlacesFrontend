@@ -1,3 +1,5 @@
+@use "../../styles/core" as *;
+
 .drawer {
 	width: 70%;
 	height: 100vh;
@@ -6,10 +8,9 @@
 	left: 0;
 	background-color: white;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-	z-index: 100;
-}
+	z-index: $z-index-drawer;
 
-.drawer-nav {
-	height: 100%;
+	&__nav {
+		height: 100%;
+	}
 }
-

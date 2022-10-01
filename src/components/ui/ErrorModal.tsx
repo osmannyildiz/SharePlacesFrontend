@@ -9,10 +9,10 @@ interface Props {
 export default function ErrorModal(props: Props) {
 	return (
 		<Modal
-			onCancel={props.onCancel}
-			header="An Error Occurred!"
 			isOpen={!!props.error}
+			headerTitle="An Error Occurred!"
 			footer={<Button onClick={props.onCancel}>OKAY</Button>}
+			onCancel={props.onCancel}
 		>
 			<p>{props.error}</p>
 		</Modal>

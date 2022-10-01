@@ -1,7 +1,7 @@
 import Place from "../../models/Place";
 import Button from "../form/Button";
 import Card from "../ui/Card";
-import "./PlaceList.css";
+import "./PlaceList.scss";
 import PlaceListItem from "./PlaceListItem";
 
 interface Props {

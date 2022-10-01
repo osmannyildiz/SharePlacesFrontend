@@ -1,0 +1,48 @@
+@use "../../styles/core" as *;
+
+.user-list-item {
+	width: calc(45% - 2rem);
+	min-width: 17.5rem;
+	margin: 1rem;
+
+	&__link {
+		width: 100%;
+		height: 100%;
+		padding: 1rem;
+		display: flex;
+		align-items: center;
+		color: white;
+		background-color: $color-elevated;
+		text-decoration: none;
+	}
+	&:hover &__link,
+	&:active &__link {
+		background-color: $color-accent2;
+	}
+
+	&__image {
+		width: 4rem;
+		height: 4rem;
+		margin-right: 1rem;
+	}
+
+	&:hover &__info,
+	&:active &__info {
+		color: $color-elevated;
+	}
+
+	&__name {
+		margin: 0 0 0.5rem 0;
+		color: $color-accent2;
+		font-size: 1.5rem;
+		font-weight: normal;
+	}
+	&:hover &__name,
+	&:active &__name {
+		color: inherit;
+	}
+
+	&__places-count {
+		margin: 0;
+	}
+}

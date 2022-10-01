@@ -1,6 +1,6 @@
 import User from "../../models/User";
 import Card from "../ui/Card";
-import "./UserList.css";
+import "./UserList.scss";
 import UserListItem from "./UserListItem";
 
 interface Props {

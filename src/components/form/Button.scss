@@ -1,0 +1,59 @@
+@use "../../styles/core" as *;
+
+.button {
+	display: inline-block;
+	padding: 0.5rem 1.5rem;
+	color: white;
+	background-color: $color-accent1;
+	border: 1px solid $color-accent1;
+	border-radius: 6px;
+	font: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	&:focus {
+		outline: none;
+	}
+	&:hover,
+	&:active {
+		background-color: $color-accent1--tint;
+		border-color: $color-accent1--tint;
+	}
+	&:disabled,
+	&:hover:disabled,
+	&:active:disabled {
+		color: $color-input-foreground--disabled;
+		background-color: $color-input-background--disabled;
+		border-color: $color-input-border--disabled;
+		cursor: not-allowed;
+	}
+}
+
+.button--inverse {
+	color: $color-accent1;
+	background-color: transparent;
+
+	&:hover,
+	&:active {
+		color: white;
+		background-color: $color-accent1;
+	}
+}
+
+.button--danger {
+	background-color: $color-danger;
+	border-color: $color-danger;
+
+	&:hover,
+	&:active {
+		background-color: $color-danger--tint;
+		border-color: $color-danger--tint;
+	}
+}
+
+.button--small {
+	font-size: 0.8rem;
+}
+
+.button--big {
+	font-size: 1.5rem;
+}

@@ -9,7 +9,7 @@ import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
 import useHttpClient from "../hooks/useHttpClient";
 import Place from "../models/Place";
-import "../styles/form.css";
+import "../styles/form.scss";
 import { Validators } from "../utils/validation";
 
 export default function EditPlace() {

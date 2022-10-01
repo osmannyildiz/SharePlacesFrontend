@@ -2,16 +2,14 @@ import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
 import cn from "../../utils/classNamesHelper";
 import Backdrop from "./Backdrop";
-import "./Modal.css";
+import "./Modal.scss";
 
 interface ModalOverlayProps {
 	children: React.ReactNode;
 	className?: string;
 	style?: React.CSSProperties;
-	header: React.ReactNode;
-	bodyClassName?: string;
+	headerTitle: React.ReactNode;
 	footer: React.ReactNode;
-	footerClassName?: string;
 	onSubmit?: React.FormEventHandler<HTMLFormElement>;
 }
 
@@ -25,15 +23,11 @@ function ModalOverlay(props: ModalOverlayProps) {
 	const content = (
 		<div className={cn("modal", props.className)} style={props.style}>
 			<header className="modal__header">
-				<h2>{props.header}</h2>
+				<h2 className="modal__header-title">{props.headerTitle}</h2>
 			</header>
 			<form onSubmit={props.onSubmit ? props.onSubmit : defaultSubmitHandler}>
-				<div className={cn("modal__body", props.bodyClassName)}>
-					{props.children}
-				</div>
-				<footer className={cn("modal__footer", props.footerClassName)}>
-					{props.footer}
-				</footer>
+				<div className="modal__body">{props.children}</div>
+				<footer className="modal__footer">{props.footer}</footer>
 			</form>
 		</div>
 	);

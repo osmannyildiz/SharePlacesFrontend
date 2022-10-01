@@ -1,5 +1,5 @@
 import cn from "../../utils/classNamesHelper";
-import "./Avatar.css";
+import "./Avatar.scss";
 
 interface Props {
 	className?: string;
@@ -13,6 +13,7 @@ export default function Avatar(props: Props) {
 	return (
 		<div className={cn("avatar", props.className)} style={props.style}>
 			<img
+				className="avatar__img"
 				src={props.src}
 				alt={props.alt}
 				style={

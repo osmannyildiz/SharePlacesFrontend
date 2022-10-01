@@ -1,10 +1,11 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import "./App.scss";
 import Header from "./components/nav/Header";
 import Spinner from "./components/ui/Spinner";
 import AuthContext from "./contexts/authContext";
 import useAuth from "./hooks/useAuth";
-import "./styles/form.css";
+import "./styles/form.scss";
 
 // Code splitting (lazy load pages)
 const AddPlace = React.lazy(() => import("./pages/AddPlace"));

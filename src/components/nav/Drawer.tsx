@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group";
-import "./Drawer.css";
+import "./Drawer.scss";
 import NavLinks from "./NavLinks";
 
 interface Props {
@@ -18,7 +18,7 @@ export default function Drawer(props: Props) {
 			unmountOnExit
 		>
 			<aside className="drawer">
-				<nav className="drawer-nav" onClick={props.handleCloseDrawer}>
+				<nav className="drawer__nav" onClick={props.handleCloseDrawer}>
 					<NavLinks />
 				</nav>
 			</aside>

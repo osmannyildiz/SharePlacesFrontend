@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom";
-import "./Backdrop.css";
+import "./Backdrop.scss";
 
 interface Props {
 	onClick?: React.MouseEventHandler<HTMLDivElement>;

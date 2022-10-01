@@ -4,7 +4,7 @@ import { fromLonLat } from "ol/proj";
 import OlOSM from "ol/source/OSM";
 import OlView from "ol/View";
 import { useEffect, useRef } from "react";
-import "./Map.css";
+import "./Map.scss";
 
 interface Props {
 	placeId: string;

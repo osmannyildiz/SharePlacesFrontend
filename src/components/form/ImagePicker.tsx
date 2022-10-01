@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import FileInputValue from "../../models/FileInputValue";
 import cn from "../../utils/classNamesHelper";
 import Button from "./Button";
-import "./ImagePicker.css";
+import "./ImagePicker.scss";
 
 interface Props {
 	name: string;
-	center?: boolean;
 	previewWidth?: string;
+	center?: boolean;
 	onInput: (name: string, value: Blob | null, isValid: boolean) => void;
 }
 
@@ -47,7 +47,13 @@ export default function ImagePicker(props: Props) {
 	};
 
 	return (
-		<div className="form-control">
+		<div
+			className={cn(
+				"image-picker form-control",
+				props.center && "image-picker--center",
+				!isValid && isTouched && "image-picker--invalid"
+			)}
+		>
 			<input
 				type="file"
 				accept=".jpg,.jpeg,.png"
@@ -56,19 +62,17 @@ export default function ImagePicker(props: Props) {
 				ref={filePickerRef}
 				onChange={pickImageHandler}
 			/>
-			<div
-				className={cn(
-					"image-picker",
-					props.center && "center",
-					!isValid && isTouched && "image-picker--invalid"
-				)}
-			>
+			<div className="image-picker__ui">
 				<div
 					className="image-picker__preview"
 					style={props.previewWidth ? { width: props.previewWidth } : {}}
 				>
 					{previewUrl ? (
-						<img src={previewUrl} alt="Preview" />
+						<img
+							className="image-picker__preview-img"
+							src={previewUrl}
+							alt="Preview"
+						/>
 					) : (
 						<p>
 							<strong>Please pick an image.</strong>

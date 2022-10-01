@@ -1,0 +1,46 @@
+// ===== VARIABLES =====
+
+$color-accent1: #ff0055;
+$color-accent1--tint: #ff4382;
+$color-accent2: #ffd900;
+$color-accent3: #2a006e;
+$color-danger: #830000;
+$color-danger--tint: #f34343;
+$color-background: #4d4d4d;
+$color-elevated: #292929;
+$color-input-background: #f8f8f8;
+$color-input-border: #ccc;
+$color-input-background--focus: #ebebeb;
+$color-input-border--focus: #510077;
+$color-input-foreground--invalid: #f00;
+$color-input-background--invalid: #ffd1d1;
+$color-input-border--invalid: #f00;
+$color-input-foreground--disabled: #979797;
+$color-input-background--disabled: #ccc;
+$color-input-border--disabled: #ccc;
+$desktop-min-width: 768px;
+$z-index-modal: 12;
+$z-index-drawer: 11;
+$z-index-backdrop: 10;
+$z-index-header: 5;
+
+// ===== MIXINS =====
+
+@mixin desktop-or-bigger {
+	@media (min-width: $desktop-min-width) {
+		@content;
+	}
+}
+
+@mixin center-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+// ===== UTILITY CLASSES =====
+
+.center {
+	@include center-content;
+}

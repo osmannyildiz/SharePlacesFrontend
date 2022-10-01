@@ -1,5 +1,5 @@
 import cn from "../../utils/classNamesHelper";
-import "./Card.css";
+import "./Card.scss";
 
 interface Props {
 	children: React.ReactNode;

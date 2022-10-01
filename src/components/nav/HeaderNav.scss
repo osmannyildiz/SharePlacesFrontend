@@ -1,0 +1,8 @@
+@use "../../styles/core" as *;
+
+.header-nav {
+	display: none;
+	@include desktop-or-bigger {
+		display: block;
+	}
+}

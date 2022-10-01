@@ -8,7 +8,7 @@ import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
 import useHttpClient from "../hooks/useHttpClient";
 import { Validators } from "../utils/validation";
-import "./Authenticate.css";
+import "./Authenticate.scss";
 
 export default function Authenticate() {
 	const authContext = useContext(AuthContext);

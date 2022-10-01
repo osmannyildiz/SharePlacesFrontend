@@ -1,0 +1,17 @@
+@use "styles/core" as *;
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
+@import "../node_modules/ol/ol.css";
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-family: "Open Sans", sans-serif;
+}
+
+body {
+	margin: 0;
+	background-color: $color-background;
+}

@@ -1,0 +1,44 @@
+@use "../../styles/core" as *;
+
+.image-picker {
+	&__ui {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+
+	&__preview {
+		width: 13rem;
+		height: 13rem;
+		margin-bottom: 1rem;
+		background-color: $color-input-background;
+		border: 1px solid $color-input-border;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	&__preview-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.image-picker--center {
+	$block: ".image-picker";
+
+	#{$block}__ui {
+		align-items: center;
+	}
+}
+
+.image-picker--invalid {
+	$block: ".image-picker";
+
+	#{$block}__preview {
+		background-color: $color-input-background--invalid;
+		border-color: $color-input-border--invalid;
+	}
+}

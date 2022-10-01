@@ -1,4 +1,4 @@
-import "./HeaderNav.css";
+import "./HeaderNav.scss";
 import NavLinks from "./NavLinks";
 
 export default function HeaderNav() {

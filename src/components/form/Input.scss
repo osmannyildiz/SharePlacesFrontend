@@ -1,0 +1,44 @@
+@use "../../styles/core" as *;
+
+.form-control {
+	margin: 1rem 0;
+
+	& label,
+	& input,
+	& textarea {
+		display: block;
+	}
+
+	& label {
+		margin-bottom: 0.5rem;
+		font-weight: bold;
+	}
+
+	& input,
+	& textarea {
+		width: 100%;
+		padding: 0.15rem 0.25rem;
+		background-color: $color-input-background;
+		border: 1px solid $color-input-border;
+		font: inherit;
+	}
+	& input:focus,
+	& textarea:focus {
+		outline: none;
+		background-color: $color-input-background--focus;
+		border-color: $color-input-border--focus;
+	}
+}
+
+.form-control--invalid {
+	& label,
+	& p {
+		color: $color-input-foreground--invalid;
+	}
+
+	& input,
+	& textarea {
+		background-color: $color-input-background--invalid;
+		border-color: $color-input-border--invalid;
+	}
+}

@@ -8,7 +8,7 @@ import ErrorModal from "../ui/ErrorModal";
 import Map from "../ui/Map";
 import Modal from "../ui/Modal";
 import Spinner from "../ui/Spinner";
-import "./PlaceListItem.css";
+import "./PlaceListItem.scss";
 
 interface Props {
 	place: Place;
@@ -48,8 +48,9 @@ export default function PlaceListItem(props: Props) {
 			{isLoading && <Spinner asOverlay />}
 			<li className="place-list-item">
 				<Card className="card--no-padding">
-					<div className="place-list-item__image">
+					<div className="place-list-item__img-wrapper">
 						<img
+							className="place-list-item__img"
 							src={
 								import.meta.env.REACT_APP_ASSET_URL + "/" + props.place.imageUrl
 							}
@@ -57,16 +58,31 @@ export default function PlaceListItem(props: Props) {
 						/>
 					</div>
 					<div className="place-list-item__info">
-						<h2>{props.place.title}</h2>
-						<h3>{props.place.address}</h3>
-						<p>{props.place.description}</p>
+						<h2 className="place-list-item__info-item">{props.place.title}</h2>
+						<h3 className="place-list-item__info-item">
+							{props.place.address}
+						</h3>
+						<p className="place-list-item__info-item">
+							{props.place.description}
+						</p>
 					</div>
 					<div className="place-list-item__actions">
-						<Button onClick={openMap}>VIEW ON MAP</Button>
+						<Button className="place-list-item__action" onClick={openMap}>
+							VIEW ON MAP
+						</Button>
 						{props.place.user === authContext.userId && (
 							<>
-								<Button to={`/places/${props.place.id}/edit`}>EDIT</Button>
-								<Button danger onClick={openDelete}>
+								<Button
+									to={`/places/${props.place.id}/edit`}
+									className="place-list-item__action"
+								>
+									EDIT
+								</Button>
+								<Button
+									className="place-list-item__action"
+									danger
+									onClick={openDelete}
+								>
 									DELETE
 								</Button>
 							</>
@@ -75,13 +91,13 @@ export default function PlaceListItem(props: Props) {
 				</Card>
 			</li>
 			<Modal
+				className="modal--no-body-padding"
 				isOpen={mapIsOpen}
-				onCancel={closeMap}
-				header={props.place.address}
-				bodyClassName="modal__body--no-padding"
+				headerTitle={props.place.address}
 				footer={<Button onClick={closeMap}>CLOSE</Button>}
+				onCancel={closeMap}
 			>
-				<div className="map-wrapper">
+				<div className="place-list-item__modal-body-map-wrapper">
 					<Map
 						center={props.place.coordinates}
 						zoom={18}
@@ -91,8 +107,7 @@ export default function PlaceListItem(props: Props) {
 			</Modal>
 			<Modal
 				isOpen={deleteIsOpen}
-				onCancel={closeDelete}
-				header="Delete Place"
+				headerTitle="Delete Place"
 				footer={
 					<>
 						<Button inverse onClick={closeDelete}>
@@ -103,6 +118,7 @@ export default function PlaceListItem(props: Props) {
 						</Button>
 					</>
 				}
+				onCancel={closeDelete}
 			>
 				<p>Are you sure you want to delete this place?</p>
 				<p>{props.place.title}</p>

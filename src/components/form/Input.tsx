@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import cn from "../../utils/classNamesHelper";
 import { runValidations, Validation } from "../../utils/validation";
-import "./Input.css";
+import "./Input.scss";
 
 interface InputReducerState {
 	value: string | number;
