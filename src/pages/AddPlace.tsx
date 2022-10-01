@@ -53,7 +53,10 @@ export default function AddPlace() {
 		<>
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
-			<form className="place-add-form form" onSubmit={submitHandler}>
+			<form
+				className="place-add-form form form--panel"
+				onSubmit={submitHandler}
+			>
 				<FormInput
 					type="text"
 					name="title"
@@ -76,11 +79,7 @@ export default function AddPlace() {
 					onInput={inputHandler}
 				/>
 				<ImagePicker name="image" previewWidth="20rem" onInput={inputHandler} />
-				<Button
-					type="submit"
-					disabled={!formState.isValid}
-					style={{ marginTop: "1.5rem" }}
-				>
+				<Button type="submit" disabled={!formState.isValid}>
 					ADD PLACE
 				</Button>
 			</form>

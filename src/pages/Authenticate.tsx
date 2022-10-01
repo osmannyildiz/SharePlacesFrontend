@@ -97,7 +97,7 @@ export default function Authenticate() {
 		<>
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
-			<form className="auth-form form" onSubmit={submitHandler}>
+			<form className="auth-form form form--panel" onSubmit={submitHandler}>
 				<h2 className="auth-form__heading">
 					{isLoginMode ? "Login" : "Register"}
 				</h2>
@@ -130,17 +130,18 @@ export default function Authenticate() {
 				)}
 				<Button
 					type="submit"
+					className="auth-form__submit-btn mx-auto"
 					disabled={!formState.isValid}
-					style={{ marginTop: "1.5rem" }}
+					style={{ marginBottom: "1rem" }}
 				>
 					{isLoginMode ? "LOGIN" : "REGISTER"}
 				</Button>
-				<br />
 				<Button
 					type="button"
 					inverse
-					className="auth-form__switch-btn"
+					className="auth-form__switch-btn mx-auto"
 					onClick={switchMode}
+					style={{ marginTop: "1rem" }}
 				>
 					SWITCH TO {isLoginMode ? "REGISTER" : "LOGIN"}
 				</Button>

@@ -91,7 +91,10 @@ export default function EditPlace() {
 				</div>
 			)}
 			{place && (
-				<form className="place-edit-form form" onSubmit={submitHandler}>
+				<form
+					className="place-edit-form form form--panel"
+					onSubmit={submitHandler}
+				>
 					<FormInput
 						type="text"
 						name="title"

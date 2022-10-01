@@ -1,14 +1,6 @@
 @use "../../styles/core" as *;
 
 .form-input {
-	margin: 1.5rem 0;
-	&:first-of-type {
-		margin-top: 0;
-	}
-	&:last-of-type {
-		margin-bottom: 0;
-	}
-
 	& label,
 	& input,
 	& textarea {

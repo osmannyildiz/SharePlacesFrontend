@@ -1,4 +1,21 @@
 .form {
+	& > .form-input,
+	& > .button {
+		display: block;
+		margin-top: 1.75rem;
+		margin-bottom: 1.75rem;
+
+		&:first-child {
+			margin-top: 0;
+		}
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.form--panel {
 	width: 90%;
 	max-width: 40rem;
 	margin: 0 auto;
@@ -6,5 +23,5 @@
 	background-color: white;
 	border-radius: 6px;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-	list-style: none;
+	// list-style: none;
 }

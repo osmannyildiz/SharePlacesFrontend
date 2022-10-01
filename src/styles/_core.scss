@@ -38,9 +38,3 @@ $z-index-header: 5;
 	align-items: center;
 	text-align: center;
 }
-
-// ===== UTILITY CLASSES =====
-
-.center {
-	@include center-content;
-}

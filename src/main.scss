@@ -1,7 +1,11 @@
 @use "styles/core" as *;
 
+// ===== EXTERNAL RESOURCES =====
+
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap");
 @import "../node_modules/ol/ol.css";
+
+// ===== BASE STYLES =====
 
 * {
 	box-sizing: border-box;
@@ -14,4 +18,15 @@ html {
 body {
 	margin: 0;
 	background-color: $color-background;
+}
+
+// ===== UTILITY CLASSES =====
+
+.center {
+	@include center-content;
+}
+
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
 }
