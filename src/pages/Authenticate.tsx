@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Button from "../components/form/Button";
+import FormInput from "../components/form/FormInput";
 import ImagePicker from "../components/form/ImagePicker";
-import Input from "../components/form/Input";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
 import AuthContext from "../contexts/authContext";
@@ -103,7 +103,7 @@ export default function Authenticate() {
 				</h2>
 				<hr />
 				{!isLoginMode && (
-					<Input
+					<FormInput
 						type="text"
 						name="name"
 						label="Your Name"
@@ -111,14 +111,14 @@ export default function Authenticate() {
 						onInput={inputHandler}
 					/>
 				)}
-				<Input
+				<FormInput
 					type="email"
 					name="email"
 					label="E-mail"
 					validations={[Validators.email()]}
 					onInput={inputHandler}
 				/>
-				<Input
+				<FormInput
 					type="password"
 					name="password"
 					label="Password"

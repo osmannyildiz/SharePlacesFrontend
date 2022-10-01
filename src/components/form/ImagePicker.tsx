@@ -49,7 +49,7 @@ export default function ImagePicker(props: Props) {
 	return (
 		<div
 			className={cn(
-				"image-picker form-control",
+				"image-picker form-input",
 				props.center && "image-picker--center",
 				!isValid && isTouched && "image-picker--invalid"
 			)}

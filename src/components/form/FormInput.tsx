@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import cn from "../../utils/classNamesHelper";
 import { runValidations, Validation } from "../../utils/validation";
-import "./Input.scss";
+import "./FormInput.scss";
 
 interface InputReducerState {
 	value: string | number;
@@ -34,7 +34,7 @@ interface Props {
 	onInput: (name: string, value: string | number, isValid: boolean) => void;
 }
 
-export default function Input(props: Props) {
+export default function FormInput(props: Props) {
 	const inputReducer: React.Reducer<InputReducerState, InputReducerAction> = (
 		state,
 		action
@@ -137,14 +137,14 @@ export default function Input(props: Props) {
 	return (
 		<div
 			className={cn(
-				"form-control",
-				!inputState.isValid && inputState.isTouched && "form-control--invalid"
+				"form-input",
+				!inputState.isValid && inputState.isTouched && "form-input--invalid"
 			)}
 		>
 			<label htmlFor={props.name}>{props.label}</label>
 			{inputEl}
 			{!inputState.isValid && inputState.isTouched && (
-				<p className="form-control__error-text">{inputState.errorText}</p>
+				<p className="form-input__error-text">{inputState.errorText}</p>
 			)}
 		</div>
 	);

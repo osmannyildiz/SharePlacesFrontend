@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/form/Button";
+import FormInput from "../components/form/FormInput";
 import ImagePicker from "../components/form/ImagePicker";
-import Input from "../components/form/Input";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
 import AuthContext from "../contexts/authContext";
@@ -54,21 +54,21 @@ export default function AddPlace() {
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
 			<form className="place-add-form form" onSubmit={submitHandler}>
-				<Input
+				<FormInput
 					type="text"
 					name="title"
 					label="Title"
 					validations={[Validators.required()]}
 					onInput={inputHandler}
 				/>
-				<Input
+				<FormInput
 					as="textarea"
 					name="description"
 					label="Description"
 					validations={[Validators.minLength(5)]}
 					onInput={inputHandler}
 				/>
-				<Input
+				<FormInput
 					type="text"
 					name="address"
 					label="Address"

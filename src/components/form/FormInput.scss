@@ -1,6 +1,6 @@
 @use "../../styles/core" as *;
 
-.form-control {
+.form-input {
 	margin: 1.5rem 0;
 	&:first-of-type {
 		margin-top: 0;
@@ -40,8 +40,8 @@
 	}
 }
 
-.form-control--invalid {
-	$block: ".form-control";
+.form-input--invalid {
+	$block: ".form-input";
 
 	& label,
 	#{$block}__error-text {

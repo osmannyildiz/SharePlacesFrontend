@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "../components/form/Button";
-import Input from "../components/form/Input";
+import FormInput from "../components/form/FormInput";
 import Card from "../components/ui/Card";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
@@ -92,7 +92,7 @@ export default function EditPlace() {
 			)}
 			{place && (
 				<form className="place-edit-form form" onSubmit={submitHandler}>
-					<Input
+					<FormInput
 						type="text"
 						name="title"
 						label="Title"
@@ -100,7 +100,7 @@ export default function EditPlace() {
 						onInput={inputHandler}
 						initialValue={place.title}
 					/>
-					<Input
+					<FormInput
 						as="textarea"
 						name="description"
 						label="Description"
