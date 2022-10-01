@@ -83,7 +83,7 @@ export function runValidations(
 			// 	break;
 
 			default:
-				console.warn(
+				throw new Error(
 					`Unimplemented validator type passed to 'validate': ${validation.type}`
 				);
 		}

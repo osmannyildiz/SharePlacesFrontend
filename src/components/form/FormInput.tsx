@@ -62,10 +62,9 @@ export default function FormInput(props: Props) {
 					return state;
 				}
 			default:
-				console.warn(
+				throw new Error(
 					`Unimplemented action type passed to 'inputReducer': ${action.type}`
 				);
-				return state;
 		}
 	};
 	const [inputState, inputDispatch] = useReducer(inputReducer, {

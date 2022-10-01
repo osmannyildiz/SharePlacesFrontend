@@ -62,10 +62,9 @@ const formReducer: React.Reducer<FormReducerState, FormReducerAction> = (
 				isValid: action.payload?.formIsValid,
 			};
 		default:
-			console.warn(
+			throw new Error(
 				`Unimplemented action type passed to 'formReducer': ${action.type}`
 			);
-			return state;
 	}
 };
 
