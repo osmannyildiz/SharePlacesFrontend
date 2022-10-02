@@ -29,7 +29,7 @@ export default function Header() {
 				</button>
 				<h1 className="header__brand">
 					<Link to="/" className="header__brand-link">
-						YourPlaces
+						{import.meta.env.PUBLIC_APP_BRAND}
 					</Link>
 				</h1>
 				<HeaderNav />
