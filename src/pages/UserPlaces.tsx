@@ -15,7 +15,8 @@ export default function UserPlaces() {
 		(async () => {
 			try {
 				const respData = await sendRequest(
-					import.meta.env.REACT_APP_BACKEND_API_URL + `/places?userId=${userId}`
+					import.meta.env.PUBLIC_APP_BACKEND_API_URL +
+						`/places?userId=${userId}`
 				);
 				setUserPlaces(respData.data);
 			} catch (err) {

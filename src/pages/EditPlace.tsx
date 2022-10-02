@@ -27,7 +27,7 @@ export default function EditPlace() {
 		(async () => {
 			try {
 				const respData = await sendRequest(
-					import.meta.env.REACT_APP_BACKEND_API_URL + `/places/${placeId}`
+					import.meta.env.PUBLIC_APP_BACKEND_API_URL + `/places/${placeId}`
 				);
 				const place = respData.data;
 				setPlace(place);
@@ -58,7 +58,7 @@ export default function EditPlace() {
 		event.preventDefault();
 		try {
 			await sendRequest(
-				import.meta.env.REACT_APP_BACKEND_API_URL + `/places/${placeId}`,
+				import.meta.env.PUBLIC_APP_BACKEND_API_URL + `/places/${placeId}`,
 				"PATCH",
 				{
 					"Content-Type": "application/json",

@@ -30,7 +30,8 @@ export default function PlaceListItem(props: Props) {
 		closeDelete();
 		try {
 			await sendRequest(
-				import.meta.env.REACT_APP_BACKEND_API_URL + `/places/${props.place.id}`,
+				import.meta.env.PUBLIC_APP_BACKEND_API_URL +
+					`/places/${props.place.id}`,
 				"DELETE",
 				{
 					Authorization: "Bearer " + authContext.token,
@@ -52,7 +53,9 @@ export default function PlaceListItem(props: Props) {
 						<img
 							className="place-list-item__img"
 							src={
-								import.meta.env.REACT_APP_ASSET_URL + "/" + props.place.imageUrl
+								import.meta.env.PUBLIC_APP_ASSET_URL +
+								"/" +
+								props.place.imageUrl
 							}
 							alt={props.place.title}
 						/>

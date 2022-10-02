@@ -13,7 +13,7 @@ export default function Users() {
 		(async () => {
 			try {
 				const respData = await sendRequest(
-					import.meta.env.REACT_APP_BACKEND_API_URL + "/users"
+					import.meta.env.PUBLIC_APP_BACKEND_API_URL + "/users"
 				);
 				setUsers(respData.data);
 			} catch (err) {

@@ -4,5 +4,5 @@ import { defineConfig } from "vite";
 // https://vitejs.dev/config/
 export default defineConfig({
 	plugins: [react()],
-	envPrefix: "REACT_APP_",
+	envPrefix: "PUBLIC_APP_",
 });

@@ -59,7 +59,7 @@ export default function Authenticate() {
 		if (isLoginMode) {
 			try {
 				const respData = await sendRequest(
-					import.meta.env.REACT_APP_BACKEND_API_URL + "/users/login",
+					import.meta.env.PUBLIC_APP_BACKEND_API_URL + "/users/login",
 					"POST",
 					{
 						"Content-Type": "application/json",
@@ -81,7 +81,7 @@ export default function Authenticate() {
 			formData.append("image", formState.inputs.image.value as Blob);
 			try {
 				const respData = await sendRequest(
-					import.meta.env.REACT_APP_BACKEND_API_URL + "/users/register",
+					import.meta.env.PUBLIC_APP_BACKEND_API_URL + "/users/register",
 					"POST",
 					undefined,
 					formData

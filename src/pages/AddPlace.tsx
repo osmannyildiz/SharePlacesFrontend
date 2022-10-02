@@ -36,7 +36,7 @@ export default function AddPlace() {
 		formData.append("image", formState.inputs.image.value as Blob);
 		try {
 			await sendRequest(
-				import.meta.env.REACT_APP_BACKEND_API_URL + "/places",
+				import.meta.env.PUBLIC_APP_BACKEND_API_URL + "/places",
 				"POST",
 				{
 					Authorization: "Bearer " + authContext.token,
