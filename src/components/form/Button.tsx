@@ -35,7 +35,11 @@ export default function Button(props: Props) {
 
 	if (props.to) {
 		return (
-			<Link to={props.to} className={className}>
+			<Link
+				to={props.to}
+				className={className}
+				style={{ display: "inline-block", ...props.style }}
+			>
 				{props.children}
 			</Link>
 		);
