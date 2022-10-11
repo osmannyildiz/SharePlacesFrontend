@@ -25,4 +25,5 @@ dist-ssr
 
 
 _gitignored
+.env*
 
