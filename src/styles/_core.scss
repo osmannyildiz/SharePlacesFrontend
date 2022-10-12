@@ -24,6 +24,8 @@ $z-index-drawer: 11;
 $z-index-backdrop: 10;
 $z-index-header: 5;
 
+$color-spinner: $color-input-border--focus;
+
 // ===== MIXINS =====
 
 @mixin desktop-or-bigger {
