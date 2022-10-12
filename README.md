@@ -1,10 +1,11 @@
 <div align="center">
 
-## SharePlaces
+### SharePlaces
 
-### A web app that lets you share your favorite places.
+#### A web app that lets you share your favorite places.
 
 </div>
+
 
 ---
 
@@ -23,16 +24,20 @@ This is the project from [Academind's awesome MERN Stack course](https://www.ude
 - [My course completion certificate](https://www.udemy.com/certificate/UC-00e3bd34-12ad-4afe-9733-49be96b896d7/)
 
 
-After the course, I kept learning and applying my new skills to this course's project. Here is a summary:
+After the course, I kept learning and applying my new skills to this project. Here is a summary:
 - Moved from Create-React-App to Vite
 - Integrated TypeScript and Sass
 - Added new components and improved existing ones
 
 
-TODO:
+#### TODO:
+
 - [ ] Use TypeScript for backend as well
 - [ ] Integrate a geocoding service; use real coordinates of the given address instead of random coordinates
 - [ ] Group SCSS classes by prefixing them with a letter ("b" for block, "u" for utility, etc.)
+
+
+---
 
 
 Before releasing this project, I got permission from Academind via e-mail.
