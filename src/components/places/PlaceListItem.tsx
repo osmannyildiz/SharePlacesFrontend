@@ -53,7 +53,7 @@ export default function PlaceListItem(props: Props) {
 						<img
 							className="place-list-item__img"
 							src={
-								import.meta.env.PUBLIC_APP_ASSET_URL +
+								import.meta.env.PUBLIC_APP_FILE_STORAGE_URL +
 								"/" +
 								props.place.imageUrl
 							}

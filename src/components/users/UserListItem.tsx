@@ -20,7 +20,7 @@ export default function UserListItem(props: Props) {
 						<Avatar
 							src={
 								props.user.imageUrl
-									? import.meta.env.PUBLIC_APP_ASSET_URL +
+									? import.meta.env.PUBLIC_APP_FILE_STORAGE_URL +
 									  "/" +
 									  props.user.imageUrl
 									: "/img/default_avatar.png"
