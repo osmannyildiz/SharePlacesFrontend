@@ -1,13 +1,12 @@
 {
-	"name": "yourplaces-frontend",
+	"name": "shareplaces-frontend",
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
-		"preview": "vite preview",
-		"update-backend": "rm -r ../yourplaces-backend/public && cp -r dist ../yourplaces-backend/public"
+		"preview": "vite preview"
 	},
 	"dependencies": {
 		"ol": "^7.1.0",
