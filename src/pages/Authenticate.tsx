@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import Button from "../components/form/Button";
 import FormInput from "../components/form/FormInput";
+import FormPanel from "../components/form/FormPanel";
 import ImagePicker from "../components/form/ImagePicker";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
@@ -97,7 +98,7 @@ export default function Authenticate() {
 		<>
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
-			<form className="auth-form form form--panel" onSubmit={submitHandler}>
+			<FormPanel className="auth-form" onSubmit={submitHandler}>
 				<h2 className="auth-form__heading">
 					{isLoginMode ? "Login" : "Register"}
 				</h2>
@@ -145,7 +146,7 @@ export default function Authenticate() {
 				>
 					SWITCH TO {isLoginMode ? "REGISTER" : "LOGIN"}
 				</Button>
-			</form>
+			</FormPanel>
 		</>
 	);
 }

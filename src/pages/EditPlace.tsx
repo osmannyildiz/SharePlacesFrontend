@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Button from "../components/form/Button";
 import FormInput from "../components/form/FormInput";
+import FormPanel from "../components/form/FormPanel";
 import Card from "../components/ui/Card";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
@@ -9,7 +10,6 @@ import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
 import useHttpClient from "../hooks/useHttpClient";
 import Place from "../models/Place";
-import "../styles/form.scss";
 import { Validators } from "../utils/validation";
 
 export default function EditPlace() {
@@ -91,10 +91,7 @@ export default function EditPlace() {
 				</div>
 			)}
 			{place && (
-				<form
-					className="place-edit-form form form--panel"
-					onSubmit={submitHandler}
-				>
+				<FormPanel className="place-edit-form" onSubmit={submitHandler}>
 					<FormInput
 						type="text"
 						name="title"
@@ -114,7 +111,7 @@ export default function EditPlace() {
 					<Button type="submit" disabled={!formState.isValid}>
 						UPDATE PLACE
 					</Button>
-				</form>
+				</FormPanel>
 			)}
 		</>
 	);

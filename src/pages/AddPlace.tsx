@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../components/form/Button";
 import FormInput from "../components/form/FormInput";
+import FormPanel from "../components/form/FormPanel";
 import ImagePicker from "../components/form/ImagePicker";
 import ErrorModal from "../components/ui/ErrorModal";
 import Spinner from "../components/ui/Spinner";
 import AuthContext from "../contexts/authContext";
 import useForm from "../hooks/useForm";
 import useHttpClient from "../hooks/useHttpClient";
-import "../styles/form.scss";
 import { Validators } from "../utils/validation";
 
 export default function AddPlace() {
@@ -53,10 +53,7 @@ export default function AddPlace() {
 		<>
 			<ErrorModal error={error} onCancel={clearError} />
 			{isLoading && <Spinner asOverlay />}
-			<form
-				className="place-add-form form form--panel"
-				onSubmit={submitHandler}
-			>
+			<FormPanel className="place-add-form" onSubmit={submitHandler}>
 				<FormInput
 					type="text"
 					name="title"
@@ -82,7 +79,7 @@ export default function AddPlace() {
 				<Button type="submit" disabled={!formState.isValid}>
 					ADD PLACE
 				</Button>
-			</form>
+			</FormPanel>
 		</>
 	);
 }
